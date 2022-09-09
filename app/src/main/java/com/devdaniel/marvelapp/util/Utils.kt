@@ -1,4 +1,4 @@
-package com.devdaniel.marvelapp
+package com.devdaniel.marvelapp.util
 
 import android.os.Bundle
 import android.view.LayoutInflater
