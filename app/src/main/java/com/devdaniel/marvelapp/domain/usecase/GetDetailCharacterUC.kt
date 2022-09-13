@@ -1,3 +1,3 @@
 package com.devdaniel.marvelapp.domain.usecase
 
-class CharactersUC
+class GetDetailCharacterUC

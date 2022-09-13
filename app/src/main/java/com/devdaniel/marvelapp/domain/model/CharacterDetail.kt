@@ -1,8 +1,9 @@
 package com.devdaniel.marvelapp.domain.model
 
-class Character(
+data class CharacterDetail(
     val id: Int,
     val name: String,
+    val modified: String,
     val description: String,
     val thumbnail: String,
     val comicAvailable: Int,

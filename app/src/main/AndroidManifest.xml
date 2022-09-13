@@ -4,6 +4,7 @@
     package="com.devdaniel.marvelapp">
 
     <application
+        android:name=".MarvelApplication"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +17,7 @@
             android:name=".ui.HomeActivity"
             android:exported="true"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MarvelApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
