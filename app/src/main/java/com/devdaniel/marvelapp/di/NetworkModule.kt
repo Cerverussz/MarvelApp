@@ -2,6 +2,8 @@ package com.devdaniel.marvelapp.di
 
 import androidx.viewbinding.BuildConfig
 import com.devdaniel.marvelapp.util.Constants
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,9 +22,10 @@ object NetworkModule {
     @Provides
     @Singleton
     fun okHttpProvider(): OkHttpClient = OkHttpClient.Builder().apply {
-        connectTimeout(TIMEOUT, TimeUnit.SECONDS)
-        writeTimeout(TIMEOUT, TimeUnit.SECONDS)
-        readTimeout(TIMEOUT, TimeUnit.SECONDS)
+        connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+        readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+        writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+        retryOnConnectionFailure(true)
         addInterceptor(loggingInterceptorProvider())
     }.build()
 
@@ -36,18 +39,23 @@ object NetworkModule {
         )
     }
 
+    private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
+
     @Provides
     @Singleton
     fun retrofitProvider(
         client: OkHttpClient
     ): Retrofit {
         return Retrofit.Builder()
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(client)
             .baseUrl(Constants.BASE_URL)
             .build()
     }
 }
 
-private const val MAX_REQUEST = 1
-private const val TIMEOUT = 20L
+private const val CONNECT_TIMEOUT = 15L
+private const val WRITE_TIMEOUT = 15L
+private const val READ_TIMEOUT = 15L

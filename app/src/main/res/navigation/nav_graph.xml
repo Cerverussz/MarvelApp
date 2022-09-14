@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/charactersFragment">
 
+    <fragment
+        android:id="@+id/charactersFragment"
+        android:name="com.devdaniel.marvelapp.ui.characters.CharactersFragment"
+        android:label="fragment_characters"
+        tools:layout="@layout/fragment_characters">
+        <action
+            android:id="@+id/action_charactersFragment_to_detailCharacterFragment"
+            app:destination="@id/detailCharacterFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/detailCharacterFragment"
+        android:name="com.devdaniel.marvelapp.ui.detail.DetailCharacterFragment"
+        android:label="detailCharacterFragment"
+        tools:layout="@layout/fragment_detail_character">
+
+        <argument
+            android:name="infoCharacter"
+            app:nullable="true"
+            app:argType="com.devdaniel.marvelapp.ui.model.InfoCharacter" />
+
+    </fragment>
 </navigation>

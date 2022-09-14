@@ -2,21 +2,33 @@ package com.devdaniel.marvelapp.data.repository
 
 import com.devdaniel.marvelapp.data.mappers.toCharacterDomain
 import com.devdaniel.marvelapp.data.remote.CharactersApi
+import com.devdaniel.marvelapp.domain.common.Result
+import com.devdaniel.marvelapp.domain.common.Result.Success
+import com.devdaniel.marvelapp.domain.common.fold
+import com.devdaniel.marvelapp.domain.common.makeSafeRequest
+import com.devdaniel.marvelapp.domain.model.Character
 import com.devdaniel.marvelapp.domain.repository.CharactersRepository
-import com.devdaniel.marvelapp.domain.repository.DomainExceptionRepository
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
 
 class CharactersRepositoryImpl(
-    private val charactersApi: CharactersApi,
-    private val domainExceptionRepository: DomainExceptionRepository
+    private val charactersApi: CharactersApi
 ) : CharactersRepository {
+    override suspend fun getCharacters(): Result<List<Character>> {
+        val result = makeSafeRequest { charactersApi.getCharacters() }
 
-    override fun getCharacters() = flow {
-        val apiResult =
-            charactersApi.getCharacters().data.infoCharacter.map { it.toCharacterDomain() }
-        emit(Result.success(apiResult))
-    }.catch { exception ->
-        Result.failure<Exception>(domainExceptionRepository.manageError(exception))
+        return result.fold(
+            onSuccess = {
+                Success(
+                    it.data.infoCharacter.map { infoCharacter ->
+                        infoCharacter.toCharacterDomain()
+                    }
+                )
+            },
+            onError = { code, message ->
+                Result.Error(code, message)
+            },
+            onException = {
+                Result.Exception(it)
+            }
+        )
     }
 }
