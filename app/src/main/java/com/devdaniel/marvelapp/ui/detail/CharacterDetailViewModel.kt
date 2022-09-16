@@ -19,10 +19,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharacterDetailViewModel @Inject constructor(
-    private val getCharacterDetailUC: GetCharacterDetailUC,
-    private val _characterDetailState: MutableStateFlow<CharacterDetailState>
+    private val getCharacterDetailUC: GetCharacterDetailUC
 ) : ViewModel() {
 
+    private val _characterDetailState: MutableStateFlow<CharacterDetailState> = MutableStateFlow(
+        CharacterDetailState()
+    )
     val characterDetailState: StateFlow<CharacterDetailState>
         get() = _characterDetailState.asStateFlow()
 
@@ -32,7 +34,7 @@ class CharacterDetailViewModel @Inject constructor(
             getCharacterDetailUC(characterId).fold(
                 onSuccess = { characterDetail ->
                     _characterDetailState.update { currentState ->
-                        currentState.copy(data = characterDetail)
+                        currentState.copy(data = characterDetail, isLoading = false)
                     }
                 },
                 onError = { errorCode, _ ->
@@ -44,7 +46,7 @@ class CharacterDetailViewModel @Inject constructor(
                 onException = { exception ->
                     val error = handleError(exception.toError())
                     _characterDetailState.update { currentState ->
-                        currentState.copy(errorMessage = error.errorMessage)
+                        currentState.copy(errorMessage = error.errorMessage, isLoading = false)
                     }
                 }
             )
@@ -54,13 +56,16 @@ class CharacterDetailViewModel @Inject constructor(
     private fun handleError(error: Error): CharacterDetailState {
         return when (error) {
             Error.Connectivity -> CharacterDetailState(
-                errorMessage = R.string.connectivity_error
+                errorMessage = R.string.connectivity_error,
+                isLoading = false
             )
             is Error.HttpException -> CharacterDetailState(
-                errorMessage = error.messageResId
+                errorMessage = error.messageResId,
+                isLoading = false
             )
             is Error.Unknown -> CharacterDetailState(
-                errorMessage = R.string.connectivity_error
+                errorMessage = R.string.connectivity_error,
+                isLoading = false
             )
         }
     }
