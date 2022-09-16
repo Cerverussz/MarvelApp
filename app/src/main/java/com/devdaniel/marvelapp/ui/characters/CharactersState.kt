@@ -1,4 +1,4 @@
-package com.devdaniel.marvelapp.ui.detail
+package com.devdaniel.marvelapp.ui.characters
 
 import androidx.annotation.StringRes
 import com.devdaniel.marvelapp.domain.model.Character

@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.devdaniel.marvelapp.R
 import com.devdaniel.marvelapp.databinding.FragmentCharactersBinding
 import com.devdaniel.marvelapp.domain.model.Character
-import com.devdaniel.marvelapp.ui.detail.CharactersState
 import com.devdaniel.marvelapp.ui.mappers.toCharacterPresentation
 import com.devdaniel.marvelapp.ui.utils.BaseFragmentBinding
 import com.devdaniel.marvelapp.util.extension.hide
@@ -98,7 +97,7 @@ class CharactersFragment :
 
     private fun navigateToCharacterDetail(character: Character) {
         val action =
-            CharactersFragmentDirections.actionCharactersFragmentToDetailCharacterFragment(
+            CharactersFragmentDirections.actionCharactersFragmentToCharacterDetailFragment(
                 character.toCharacterPresentation()
             )
         findNavController().navigate(action)

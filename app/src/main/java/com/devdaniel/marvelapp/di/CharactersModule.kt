@@ -4,8 +4,8 @@ import com.devdaniel.marvelapp.data.remote.CharactersApi
 import com.devdaniel.marvelapp.data.repository.CharactersRepositoryImpl
 import com.devdaniel.marvelapp.domain.repository.CharactersRepository
 import com.devdaniel.marvelapp.domain.usecase.GetCharactersUC
+import com.devdaniel.marvelapp.ui.characters.CharactersState
 import com.devdaniel.marvelapp.ui.characters.CharactersViewModel
-import com.devdaniel.marvelapp.ui.detail.CharactersState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

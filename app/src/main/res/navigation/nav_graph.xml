@@ -11,20 +11,18 @@
         android:label="fragment_characters"
         tools:layout="@layout/fragment_characters">
         <action
-            android:id="@+id/action_charactersFragment_to_detailCharacterFragment"
-            app:destination="@id/detailCharacterFragment"
+            android:id="@+id/action_charactersFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
-
     <fragment
-        android:id="@+id/detailCharacterFragment"
-        android:name="com.devdaniel.marvelapp.ui.detail.DetailCharacterFragment"
-        android:label="detailCharacterFragment"
-        tools:layout="@layout/fragment_detail_character">
+        android:id="@+id/characterDetailFragment"
+        android:name="com.devdaniel.marvelapp.ui.detail.CharacterDetailFragment"
+        android:label="characterDetailFragment">
 
         <argument
             android:name="infoCharacter"

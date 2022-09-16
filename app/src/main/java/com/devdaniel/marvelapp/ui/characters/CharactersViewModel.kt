@@ -11,7 +11,6 @@ import com.devdaniel.marvelapp.domain.common.fold
 import com.devdaniel.marvelapp.domain.common.toError
 import com.devdaniel.marvelapp.domain.common.validateHttpCodeErrorCode
 import com.devdaniel.marvelapp.domain.usecase.GetCharactersUC
-import com.devdaniel.marvelapp.ui.detail.CharactersState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
