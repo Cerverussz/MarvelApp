@@ -75,9 +75,9 @@ val Typography = Typography(
         letterSpacing = 0.15.sp
     ),
     subtitle2 = TextStyle(
-        fontFamily = Nabla,
+        fontFamily = FontFamily.SansSerif,
         fontSize = 14.sp,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Light,
         lineHeight = 24.sp,
         letterSpacing = 0.1.sp
     ),
