@@ -90,7 +90,7 @@ val Typography = Typography(
     ),
     body2 = TextStyle(
         fontFamily = Nabla,
-        fontSize = 14.sp,
+        fontSize = 12.sp,
         fontWeight = FontWeight.Medium,
         lineHeight = 20.sp,
         letterSpacing = 0.25.sp

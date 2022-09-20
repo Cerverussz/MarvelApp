@@ -13,4 +13,9 @@
     <string name="title_character_detail_appearances">Appearances</string>
     <string name="title_character_detail_name">%1$s \n%2$s</string>
     <string name="detail_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempus, sem vitae convallis imperdiet, lectus nunc pharetra diam, ac rhoncus quam eros eu risus. Nulla pulvinar condimentum erat, pulvinar tempus turpis blandit ut. Etiam sed ipsum sed lacus eleifend hendrerit eu quis quam. Etiam ligula eros, finibus vestibulum tortor ac, ultrices accumsan dolor. Vivamus vel nisl a libero lobortis posuere. Aenean facilisis nibh vel ultrices bibendum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse ac est vitae lacus commodo efficitur at ut massa. Etiam vestibulum sit amet sapien sed varius. Aliquam non ipsum imperdiet, pulvinar enim nec, mollis risus. Fusce id tincidunt nisl.</string>
+    <string name="title_character_comics">Comics</string>
+    <string name="title_character_series">Series</string>
+    <string name="title_character_stories">Stories</string>
+    <string name="title_character_content_description">Image Character Marvel</string>
+    <string name="title_character_back_content_description">go to back</string>
 </resources>

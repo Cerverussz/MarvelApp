@@ -34,12 +34,16 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Device
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.lerp
@@ -49,6 +53,7 @@ import coil.request.ImageRequest
 import com.devdaniel.marvelapp.R
 import com.devdaniel.marvelapp.domain.model.CharacterDetail
 import com.devdaniel.marvelapp.ui.components.MarvelSurface
+import com.devdaniel.marvelapp.ui.components.backgroundWithOutCorners
 import com.devdaniel.marvelapp.ui.model.InfoCharacter
 import com.devdaniel.marvelapp.ui.theme.Typography
 import com.devdaniel.marvelapp.ui.theme.black_1C1B1F
@@ -65,14 +70,28 @@ import kotlin.math.min
 import kotlin.random.Random
 
 private val GradientScroll = 100.dp
-private val ImageOverlap = 115.dp
+private val ImageOverlap = 121.dp
 private val MinTitleOffset = 56.dp
 private val MinImageOffset = 12.dp
 private val MaxTitleOffset = ImageOverlap + MinTitleOffset + GradientScroll
 private val TitleHeightOffset = MinTitleOffset + GradientScroll
 private val ExpandedImageSize = 200.dp
 private val CollapsedImageSize = 100.dp
-private val HzPadding = Modifier.padding(horizontal = 24.dp)
+private val size_6Dp = 6.dp
+private val size_10Dp = 10.dp
+private val size_12Dp = 12.dp
+private val size_16Dp = 16.dp
+private val size_24Dp = 24.dp
+private val size_25Dp = 25.dp
+private val size_30Dp = 30.dp
+private val size_36Dp = 36.dp
+private const val ZERO_VALUE = 0
+private const val ONE_VALUE = 1
+private const val TWO_VALUE = 2
+private const val THREE_VALUE = 3
+private const val SEVEN_VALUE = 7
+private const val ALPHA_03 = 0.35f
+private const val MIN_SCREEN_WIDTH = 390.0f
 
 @Composable
 fun CharacterDetail(
@@ -80,7 +99,7 @@ fun CharacterDetail(
     infoCharacter: InfoCharacter?,
     onBackPress: () -> Unit
 ) {
-    val characterId = infoCharacter?.id ?: 0
+    val characterId = infoCharacter?.id ?: ZERO_VALUE
     LaunchedEffect(key1 = characterId) {
         characterDetailViewModel.getCharacterDetail(characterId)
     }
@@ -101,7 +120,7 @@ fun CharacterDetail(
 @Composable
 private fun CharacterDetailScreen(data: CharacterDetail, onBackPress: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
-        val scroll = rememberScrollState(0)
+        val scroll = rememberScrollState(ZERO_VALUE)
         Header()
         CharacterInfo(data, scroll)
         CharacterTitle(data.name) { scroll.value }
@@ -116,19 +135,6 @@ private fun CharacterDetailScreen(data: CharacterDetail, onBackPress: () -> Unit
 private fun CharacterTitle(name: String, scrollProvider: () -> Int) {
     val maxOffset = with(LocalDensity.current) { MaxTitleOffset.toPx() }
     val minOffset = with(LocalDensity.current) { MinTitleOffset.toPx() }
-
-    val nameTwoLines = name.trim().split(" ")
-    // TODO: ver como soluciono lo del nombre cuando es muy largo
-    val characterName = if (nameTwoLines.count() > 1) {
-        LocalContext.current.getString(
-            R.string.title_character_detail_name,
-            nameTwoLines[0],
-            nameTwoLines[1]
-        )
-    } else {
-        name
-    }
-
     Column(
         verticalArrangement = Arrangement.Bottom,
         modifier = Modifier
@@ -136,19 +142,18 @@ private fun CharacterTitle(name: String, scrollProvider: () -> Int) {
             .offset {
                 val scroll = scrollProvider()
                 val offset = (maxOffset - scroll).coerceAtLeast(minOffset)
-                IntOffset(x = 0, y = offset.toInt())
+                IntOffset(x = ZERO_VALUE, y = offset.toInt())
             }
             .background(color = MaterialTheme.colors.primary)
             .fillMaxWidth()
     ) {
-        Spacer(Modifier.height(8.dp))
         Text(
             text = name,
-            style = MaterialTheme.typography.h5,
+            style = MaterialTheme.typography.h6,
             color = MaterialTheme.colors.primaryVariant,
-            modifier = Modifier.padding(start = 12.dp, end = 12.dp)
+            modifier = Modifier.padding(start = size_12Dp, end = size_12Dp)
         )
-        Divider(color = black_1C1B1F.copy(alpha = 0.35f))
+        Divider(color = black_1C1B1F.copy(alpha = ALPHA_03))
     }
 }
 
@@ -173,7 +178,6 @@ fun CharacterInfo(data: CharacterDetail, scroll: ScrollState) {
                         .background(color = MaterialTheme.colors.primary)
                 ) {
                     Spacer(Modifier.height(ImageOverlap))
-                    Spacer(Modifier.height(6.dp))
                     val description =
                         data.description.ifEmpty {
                             LocalContext.current.getString(
@@ -186,31 +190,103 @@ fun CharacterInfo(data: CharacterDetail, scroll: ScrollState) {
                         color = MaterialTheme.colors.primaryVariant,
                         modifier = Modifier
                             .align(Alignment.CenterHorizontally)
-                            .padding(start = 16.dp, end = 16.dp, top = 10.dp)
+                            .padding(start = size_16Dp, end = size_16Dp, top = size_10Dp)
                     )
-                    Spacer(Modifier.height(6.dp))
+                    Spacer(Modifier.height(size_6Dp))
                     Text(
                         text = stringResource(id = R.string.title_character_detail_appearances),
                         style = Typography.h4.copy(color = MaterialTheme.colors.primaryVariant),
-                        modifier = Modifier.padding(start = 12.dp, end = 12.dp)
+                        modifier = Modifier.padding(start = size_12Dp, end = size_12Dp)
                     )
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .background(color = Color.Cyan)
-                            .padding(start = 16.dp, end = 16.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Text(text = data.comicAvailable.toString())
-                        Text(text = data.seriesAvailable.toString())
-                        Text(text = data.storiesAvailable.toString())
-                    }
-                    Spacer(modifier = Modifier.height(ExpandedImageSize.times(3)))
+                    Appearances(data)
                 }
             }
         }
     }
 }
+
+@Composable
+private fun Appearances(data: CharacterDetail) {
+    val configuration = LocalConfiguration.current
+    val screenWidth = configuration.screenWidthDp.dp
+    val (
+        textStyle: TextStyle,
+        verticalPadding: Dp,
+        horizontalPadding: Dp
+    ) = getStyleToAppearanceView(screenWidth)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = size_16Dp, end = size_16Dp),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        Column(
+            modifier = Modifier.backgroundWithOutCorners(
+                backgroundColor = MaterialTheme.colors.secondaryVariant,
+                verticalPadding = verticalPadding,
+                horizontalPadding = horizontalPadding
+            )
+        ) {
+            Text(
+                text = stringResource(R.string.title_character_comics),
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                style = textStyle
+            )
+            Text(
+                text = data.comicAvailable.toString(),
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                style = textStyle
+            )
+        }
+
+        Column(
+            modifier = Modifier.backgroundWithOutCorners(
+                backgroundColor = MaterialTheme.colors.secondaryVariant,
+                verticalPadding = verticalPadding,
+                horizontalPadding = horizontalPadding
+            )
+        ) {
+            Text(
+                text = stringResource(R.string.title_character_series),
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                style = textStyle
+            )
+            Text(
+                text = data.seriesAvailable.toString(),
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                style = textStyle
+            )
+        }
+
+        Column(
+            modifier = Modifier.backgroundWithOutCorners(
+                backgroundColor = MaterialTheme.colors.secondaryVariant,
+                verticalPadding = verticalPadding,
+                horizontalPadding = horizontalPadding
+            )
+        ) {
+            Text(
+                text = stringResource(R.string.title_character_stories),
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                style = textStyle
+            )
+            Text(
+                text = data.storiesAvailable.toString(),
+                modifier = Modifier.align(Alignment.CenterHorizontally),
+                style = textStyle
+            )
+        }
+    }
+    Spacer(modifier = Modifier.height(ExpandedImageSize.times(THREE_VALUE)))
+}
+
+@Composable
+private fun getStyleToAppearanceView(screenWidth: Dp) =
+    if (screenWidth.value < MIN_SCREEN_WIDTH) {
+        Triple(Typography.body2, size_30Dp, size_25Dp)
+    } else {
+        Triple(Typography.body1, size_12Dp, size_30Dp)
+    }
 
 @Composable
 private fun Header() {
@@ -224,13 +300,13 @@ private fun Header() {
         red_B3261E,
         purple_49454F
     )
-    val randomOne = Random.nextInt(0, 7)
-    val randomTwo = Random.nextInt(0, 7)
+    val randomOne = Random.nextInt(ZERO_VALUE, SEVEN_VALUE)
+    val randomTwo = Random.nextInt(ZERO_VALUE, SEVEN_VALUE)
     val firstColor = colors[randomOne]
     val secondColor = colors[randomTwo]
     Spacer(
         modifier = Modifier
-            .height(200.dp)
+            .height(CollapsedImageSize)
             .fillMaxWidth()
             .background(
                 Brush.horizontalGradient(listOf(firstColor, secondColor))
@@ -245,12 +321,12 @@ private fun Image(
 ) {
     val collapseRange = with(LocalDensity.current) { (MaxTitleOffset - MinTitleOffset).toPx() }
     val collapseFractionProvider = {
-        (scrollProvider() / collapseRange).coerceIn(0f, 1f)
+        (scrollProvider() / collapseRange).coerceIn(ZERO_VALUE.toFloat(), ONE_VALUE.toFloat())
     }
 
     CollapsingImageLayout(
         collapseFractionProvider = collapseFractionProvider,
-        modifier = HzPadding.then(Modifier.statusBarsPadding())
+        modifier = Modifier.padding(horizontal = size_24Dp).then(Modifier.statusBarsPadding())
     ) {
         MarvelSurface(
             color = Color.LightGray,
@@ -262,7 +338,7 @@ private fun Image(
                     .data(imageUrl)
                     .crossfade(true)
                     .build(),
-                contentDescription = "Image Character Marvel",
+                contentDescription = stringResource(R.string.title_character_content_description),
                 placeholder = painterResource(R.drawable.ic_broken_image),
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
@@ -281,18 +357,19 @@ private fun CollapsingImageLayout(
         modifier = modifier,
         content = content
     ) { measurables, constraints ->
-        check(measurables.size == 1)
+        check(measurables.size == ONE_VALUE)
 
         val collapseFraction = collapseFractionProvider()
 
         val imageMaxSize = min(ExpandedImageSize.roundToPx(), constraints.maxWidth)
         val imageMinSize = max(CollapsedImageSize.roundToPx(), constraints.minWidth)
         val imageWidth = lerp(imageMaxSize, imageMinSize, collapseFraction)
-        val imagePlaceable = measurables[0].measure(Constraints.fixed(imageWidth, imageWidth))
+        val imagePlaceable =
+            measurables[ZERO_VALUE].measure(Constraints.fixed(imageWidth, imageWidth))
 
         val imageY = lerp(MinTitleOffset, MinImageOffset, collapseFraction).roundToPx()
         val imageX = lerp(
-            (constraints.maxWidth - imageWidth) / 2, // centered when expanded
+            (constraints.maxWidth - imageWidth) / TWO_VALUE, // centered when expanded
             constraints.maxWidth - imageWidth, // right aligned when collapsed
             collapseFraction
         )
@@ -311,17 +388,17 @@ private fun Back(upPress: () -> Unit) {
         onClick = upPress,
         modifier = Modifier
             .statusBarsPadding()
-            .padding(horizontal = 16.dp, vertical = 10.dp)
-            .size(36.dp)
+            .padding(horizontal = size_16Dp, vertical = size_10Dp)
+            .size(size_36Dp)
             .background(
-                color = black_1C1B1F.copy(alpha = 0.32f),
+                color = black_1C1B1F.copy(alpha = ALPHA_03),
                 shape = CircleShape
             )
     ) {
         Icon(
             imageVector = Icons.Outlined.ArrowBack,
             tint = white,
-            contentDescription = "go to back"
+            contentDescription = stringResource(R.string.title_character_back_content_description)
         )
     }
 }
@@ -334,7 +411,11 @@ fun LoadingScreen() {
 fun ErrorScreen(errorMessage: Int) {
 }
 
-@Preview("default", uiMode = Configuration.UI_MODE_NIGHT_NO)
+@Preview(
+    "default",
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    device = Devices.CUSTOM_DEVICE
+)
 @Preview("dark theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Preview("large font", fontScale = 2f)
 @Composable
@@ -352,4 +433,10 @@ private fun CharacterDetailPreview() {
         )
         CharacterDetailScreen(data = data) {}
     }
+}
+
+@Device
+object Devices {
+    const val CUSTOM_DEVICE =
+        "spec:id=reference_phone,shape=Normal,width=392,height=778,unit=dp,dpi=400"
 }
