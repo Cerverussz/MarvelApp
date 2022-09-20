@@ -18,4 +18,5 @@
     <string name="title_character_stories">Stories</string>
     <string name="title_character_content_description">Image Character Marvel</string>
     <string name="title_character_back_content_description">go to back</string>
+    <string name="title_character_error_image_content_description">Hulk Angry for error</string>
 </resources>

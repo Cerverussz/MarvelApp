@@ -1,6 +1,7 @@
 package com.devdaniel.marvelapp.ui.detail
 
 import android.content.res.Configuration
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,6 +29,7 @@ import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -40,6 +42,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Device
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
@@ -50,6 +53,9 @@ import androidx.compose.ui.unit.lerp
 import androidx.compose.ui.util.lerp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.devdaniel.marvelapp.R
 import com.devdaniel.marvelapp.domain.model.CharacterDetail
 import com.devdaniel.marvelapp.ui.components.MarvelSurface
@@ -405,10 +411,34 @@ private fun Back(upPress: () -> Unit) {
 
 @Composable
 fun LoadingScreen() {
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.ironman_loader))
+    Box(modifier = Modifier.fillMaxSize().padding(64.dp)) {
+        LottieAnimation(composition)
+    }
 }
 
 @Composable
 fun ErrorScreen(errorMessage: Int) {
+    Column(
+        modifier = Modifier.fillMaxSize().background(color = MaterialTheme.colors.primary),
+        verticalArrangement = Arrangement.Bottom
+    ) {
+        Text(
+            text = stringResource(id = errorMessage),
+            modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(),
+            textAlign = TextAlign.Center,
+            style = Typography.h4
+        )
+        Spacer(modifier = Modifier.height(size_36Dp))
+        Image(
+            modifier = Modifier.fillMaxWidth(),
+            painter = painterResource(id = R.drawable.hulk_angry),
+            contentScale = ContentScale.Crop,
+            contentDescription = stringResource(
+                R.string.title_character_error_image_content_description
+            )
+        )
+    }
 }
 
 @Preview(
@@ -433,6 +463,17 @@ private fun CharacterDetailPreview() {
         )
         CharacterDetailScreen(data = data) {}
     }
+}
+
+@Preview(
+    "default",
+    uiMode = Configuration.UI_MODE_NIGHT_NO,
+    device = Devices.CUSTOM_DEVICE
+)
+@Preview("dark theme", uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun ErrorScreenPreview() {
+    ErrorScreen(errorMessage = R.string.not_found_error)
 }
 
 @Device
