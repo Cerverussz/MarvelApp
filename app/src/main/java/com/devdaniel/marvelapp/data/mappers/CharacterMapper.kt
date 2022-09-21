@@ -1,5 +1,6 @@
 package com.devdaniel.marvelapp.data.mappers
 
+import com.devdaniel.marvelapp.data.local.entities.CharacterEntity
 import com.devdaniel.marvelapp.data.model.InfoCharacter
 import com.devdaniel.marvelapp.domain.model.Character
 import com.devdaniel.marvelapp.domain.model.CharacterDetail
@@ -26,6 +27,31 @@ fun InfoCharacter.toCharacterDetailDomain(): CharacterDetail {
         seriesAvailable = series.available,
         storiesAvailable = stories.available,
         modified = modified.take(n = 10)
+    )
+}
+
+fun InfoCharacter.mapToDatabase(): CharacterEntity {
+    return CharacterEntity(
+        id = id,
+        name = name,
+        modified = modified,
+        description = description,
+        thumbnail = thumbnail.getThumbnail(),
+        comicAvailable = comics.available,
+        seriesAvailable = series.available,
+        storiesAvailable = stories.available
+    )
+}
+
+fun CharacterEntity.mapToDomain(): Character {
+    return Character(
+        id = id,
+        name = name,
+        description = description,
+        thumbnail = thumbnail,
+        comicAvailable = comicAvailable,
+        seriesAvailable = comicAvailable,
+        storiesAvailable = storiesAvailable
     )
 }
 

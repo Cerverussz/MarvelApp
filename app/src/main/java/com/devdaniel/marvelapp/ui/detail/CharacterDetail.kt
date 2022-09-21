@@ -57,9 +57,9 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.devdaniel.marvelapp.R
-import com.devdaniel.marvelapp.domain.model.CharacterDetail
 import com.devdaniel.marvelapp.ui.components.MarvelSurface
 import com.devdaniel.marvelapp.ui.components.backgroundWithOutCorners
+import com.devdaniel.marvelapp.ui.mappers.toCharacterPresentation
 import com.devdaniel.marvelapp.ui.model.InfoCharacter
 import com.devdaniel.marvelapp.ui.theme.Typography
 import com.devdaniel.marvelapp.ui.theme.black_1C1B1F
@@ -114,17 +114,19 @@ fun CharacterDetail(
     if (characterDetailState.value.isLoading) {
         LoadingScreen()
     }
-    characterDetailState.value.errorMessage?.let { errorMessage ->
-        ErrorScreen(errorMessage)
-    }
 
     characterDetailState.value.data?.let { data ->
-        CharacterDetailScreen(data, onBackPress)
-    } /*?: infoCharacter?.let { CharacterDetailScreen(data = it) }*/
+        CharacterDetailScreen(data.toCharacterPresentation(), onBackPress)
+    } ?: infoCharacter?.let { data ->
+        CharacterDetailScreen(
+            data = data,
+            onBackPress
+        )
+    }
 }
 
 @Composable
-private fun CharacterDetailScreen(data: CharacterDetail, onBackPress: () -> Unit) {
+private fun CharacterDetailScreen(data: InfoCharacter, onBackPress: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         val scroll = rememberScrollState(ZERO_VALUE)
         Header()
@@ -164,7 +166,7 @@ private fun CharacterTitle(name: String, scrollProvider: () -> Int) {
 }
 
 @Composable
-fun CharacterInfo(data: CharacterDetail, scroll: ScrollState) {
+fun CharacterInfo(data: InfoCharacter, scroll: ScrollState) {
     Column {
         Spacer(
             modifier = Modifier
@@ -212,7 +214,7 @@ fun CharacterInfo(data: CharacterDetail, scroll: ScrollState) {
 }
 
 @Composable
-private fun Appearances(data: CharacterDetail) {
+private fun Appearances(data: InfoCharacter) {
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
     val (
@@ -296,6 +298,8 @@ private fun getStyleToAppearanceView(screenWidth: Dp) =
 
 @Composable
 private fun Header() {
+    val configuration = LocalConfiguration.current
+    val screenHeight = configuration.screenHeightDp.dp.div(THREE_VALUE)
     val colors = listOf(
         purple_7057f5,
         blue_86f7fa,
@@ -312,7 +316,7 @@ private fun Header() {
     val secondColor = colors[randomTwo]
     Spacer(
         modifier = Modifier
-            .height(CollapsedImageSize)
+            .height(screenHeight)
             .fillMaxWidth()
             .background(
                 Brush.horizontalGradient(listOf(firstColor, secondColor))
@@ -451,10 +455,9 @@ fun ErrorScreen(errorMessage: Int) {
 @Composable
 private fun CharacterDetailPreview() {
     MaterialTheme {
-        val data = CharacterDetail(
+        val data = InfoCharacter(
             id = 23,
             name = "Daniel",
-            modified = "",
             description = "",
             thumbnail = "",
             comicAvailable = 3,

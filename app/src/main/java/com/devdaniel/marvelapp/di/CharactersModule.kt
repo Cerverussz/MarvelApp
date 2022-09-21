@@ -1,9 +1,10 @@
 package com.devdaniel.marvelapp.di
 
+import com.devdaniel.marvelapp.data.local.CharactersDao
 import com.devdaniel.marvelapp.data.remote.CharactersApi
 import com.devdaniel.marvelapp.data.repository.CharactersRepositoryImpl
 import com.devdaniel.marvelapp.domain.repository.CharactersRepository
-import com.devdaniel.marvelapp.domain.usecase.GetCharactersUC
+import com.devdaniel.marvelapp.domain.usecase.CharactersUC
 import com.devdaniel.marvelapp.ui.characters.CharactersState
 import com.devdaniel.marvelapp.ui.characters.CharactersViewModel
 import dagger.Module
@@ -20,20 +21,21 @@ object CharactersModule {
 
     @Provides
     fun charactersViewModelProvider(
-        getCharactersUC: GetCharactersUC
+        getCharactersUC: CharactersUC
     ) = CharactersViewModel(getCharactersUC, MutableStateFlow(CharactersState.Loading))
 
     @Provides
     @ViewModelScoped
     fun getCharactersUCProvider(
         charactersRepository: CharactersRepository
-    ): GetCharactersUC = GetCharactersUC(charactersRepository)
+    ): CharactersUC = CharactersUC(charactersRepository)
 
     @Provides
     @ViewModelScoped
     fun charactersRepositoryProvider(
-        charactersApi: CharactersApi
-    ): CharactersRepository = CharactersRepositoryImpl(charactersApi)
+        charactersApi: CharactersApi,
+        charactersDao: CharactersDao
+    ): CharactersRepository = CharactersRepositoryImpl(charactersApi, charactersDao)
 
     @Provides
     @ViewModelScoped

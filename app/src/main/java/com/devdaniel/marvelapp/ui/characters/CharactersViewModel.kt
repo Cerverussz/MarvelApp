@@ -10,7 +10,7 @@ import com.devdaniel.marvelapp.domain.common.Error.Unknown
 import com.devdaniel.marvelapp.domain.common.fold
 import com.devdaniel.marvelapp.domain.common.toError
 import com.devdaniel.marvelapp.domain.common.validateHttpCodeErrorCode
-import com.devdaniel.marvelapp.domain.usecase.GetCharactersUC
+import com.devdaniel.marvelapp.domain.usecase.CharactersUC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,17 +22,19 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
-    private val getCharactersUC: GetCharactersUC,
+    private val charactersUC: CharactersUC,
     private val _charactersState: MutableStateFlow<CharactersState>
 ) : ViewModel() {
 
     val charactersState: StateFlow<CharactersState>
         get() = _charactersState.asStateFlow()
 
+    val localCharacters = charactersUC.getLocalCharacters()
+
     fun getCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
             _charactersState.value = CharactersState.Loading
-            getCharactersUC().fold(
+            charactersUC.getRemoteCharacters().fold(
                 onSuccess = { characters ->
                     _charactersState.update { CharactersState.CharactersSuccess(characters) }
                 },

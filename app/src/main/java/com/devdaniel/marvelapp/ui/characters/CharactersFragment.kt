@@ -11,17 +11,22 @@ import com.devdaniel.marvelapp.databinding.FragmentCharactersBinding
 import com.devdaniel.marvelapp.domain.model.Character
 import com.devdaniel.marvelapp.ui.mappers.toCharacterPresentation
 import com.devdaniel.marvelapp.ui.utils.BaseFragmentBinding
+import com.devdaniel.marvelapp.util.ConnectivityObserver
 import com.devdaniel.marvelapp.util.extension.hide
 import com.devdaniel.marvelapp.util.extension.observeFlows
 import com.devdaniel.marvelapp.util.extension.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CharactersFragment :
     BaseFragmentBinding<FragmentCharactersBinding>(FragmentCharactersBinding::inflate) {
 
     private val charactersViewModel: CharactersViewModel by viewModels()
+
+    @Inject
+    lateinit var connectivityObserver: ConnectivityObserver
 
     private val charactersAdapter by lazy { CharactersAdapter(::navigateToCharacterDetail) }
 
@@ -47,6 +52,27 @@ class CharactersFragment :
                         is CharactersState.CharactersError -> {
                             hideAllViews()
                             showScreenError(state.errorMessage)
+                        }
+                    }
+                }
+            }
+
+            coroutineScope.launch {
+                connectivityObserver.observe().collect {
+                    when (it) {
+                        ConnectivityObserver.Status.Available -> {
+                            charactersViewModel.getCharacters()
+                        }
+                        ConnectivityObserver.Status.Unavailable -> {
+                            println("daniel Unavailable")
+                        }
+                        ConnectivityObserver.Status.Losing -> {
+                            println("daniel Losing")
+                        }
+                        ConnectivityObserver.Status.Lost -> {
+                            charactersViewModel.localCharacters.collect { characters ->
+                                charactersAdapter.submitList(characters)
+                            }
                         }
                     }
                 }
@@ -90,9 +116,11 @@ class CharactersFragment :
     }
 
     private fun setupRecyclerView() {
-        binding.rcvCharacters.adapter = charactersAdapter
-        binding.rcvCharacters.layoutManager =
-            StaggeredGridLayoutManager(SPAN_COLUMNS, StaggeredGridLayoutManager.VERTICAL)
+        with(binding.rcvCharacters) {
+            adapter = charactersAdapter
+            layoutManager =
+                StaggeredGridLayoutManager(SPAN_COLUMNS, StaggeredGridLayoutManager.VERTICAL)
+        }
     }
 
     private fun navigateToCharacterDetail(character: Character) {
