@@ -34,7 +34,6 @@ class CharactersFragment :
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupCollectors()
-        charactersViewModel.getCharacters()
     }
 
     private fun setupCollectors() {
@@ -50,8 +49,10 @@ class CharactersFragment :
                             showRecyclerView()
                         }
                         is CharactersState.CharactersError -> {
-                            hideAllViews()
-                            showScreenError(state.errorMessage)
+                            getLocalCharacters {
+                                hideAllViews()
+                                showScreenError(state.errorMessage)
+                            }
                         }
                     }
                 }
@@ -61,6 +62,7 @@ class CharactersFragment :
                 connectivityObserver.observe().collect {
                     when (it) {
                         ConnectivityObserver.Status.Available -> {
+                            println("daniel Available")
                             charactersViewModel.getCharacters()
                         }
                         ConnectivityObserver.Status.Unavailable -> {
@@ -70,14 +72,28 @@ class CharactersFragment :
                             println("daniel Losing")
                         }
                         ConnectivityObserver.Status.Lost -> {
-                            charactersViewModel.localCharacters.collect { characters ->
-                                charactersAdapter.submitList(characters)
-                            }
+                            getLocalCharacters()
                         }
                     }
                 }
             }
         }
+    }
+
+    private suspend fun getLocalCharacters(closure: () -> Unit = {}) {
+        charactersViewModel.localCharacters.collect { characters ->
+            if (characters.isNotEmpty()) {
+                charactersAdapter.submitList(characters)
+                showRecyclerView()
+            } else {
+                closure.invoke()
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        charactersViewModel.getCharacters()
     }
 
     private fun showScreenError(errorMessage: Int?) {

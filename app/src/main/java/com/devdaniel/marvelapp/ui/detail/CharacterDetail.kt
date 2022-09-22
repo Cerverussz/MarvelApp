@@ -57,9 +57,9 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.devdaniel.marvelapp.R
+import com.devdaniel.marvelapp.domain.model.CharacterDetail
 import com.devdaniel.marvelapp.ui.components.MarvelSurface
 import com.devdaniel.marvelapp.ui.components.backgroundWithOutCorners
-import com.devdaniel.marvelapp.ui.mappers.toCharacterPresentation
 import com.devdaniel.marvelapp.ui.model.InfoCharacter
 import com.devdaniel.marvelapp.ui.theme.Typography
 import com.devdaniel.marvelapp.ui.theme.black_1C1B1F
@@ -115,18 +115,23 @@ fun CharacterDetail(
         LoadingScreen()
     }
 
+    if (characterDetailState.value.isError) {
+        characterDetailViewModel.getLocalCharacterDetail(characterId)
+    }
+
+    characterDetailState.value.errorMessage?.let { message ->
+        if (characterDetailState.value.isError) {
+            ErrorScreen(message)
+        }
+    }
+
     characterDetailState.value.data?.let { data ->
-        CharacterDetailScreen(data.toCharacterPresentation(), onBackPress)
-    } ?: infoCharacter?.let { data ->
-        CharacterDetailScreen(
-            data = data,
-            onBackPress
-        )
+        CharacterDetailScreen(data, onBackPress)
     }
 }
 
 @Composable
-private fun CharacterDetailScreen(data: InfoCharacter, onBackPress: () -> Unit) {
+private fun CharacterDetailScreen(data: CharacterDetail, onBackPress: () -> Unit) {
     Box(modifier = Modifier.fillMaxSize()) {
         val scroll = rememberScrollState(ZERO_VALUE)
         Header()
@@ -166,7 +171,7 @@ private fun CharacterTitle(name: String, scrollProvider: () -> Int) {
 }
 
 @Composable
-fun CharacterInfo(data: InfoCharacter, scroll: ScrollState) {
+fun CharacterInfo(data: CharacterDetail, scroll: ScrollState) {
     Column {
         Spacer(
             modifier = Modifier
@@ -214,7 +219,7 @@ fun CharacterInfo(data: InfoCharacter, scroll: ScrollState) {
 }
 
 @Composable
-private fun Appearances(data: InfoCharacter) {
+private fun Appearances(data: CharacterDetail) {
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
     val (
@@ -455,14 +460,15 @@ fun ErrorScreen(errorMessage: Int) {
 @Composable
 private fun CharacterDetailPreview() {
     MaterialTheme {
-        val data = InfoCharacter(
+        val data = CharacterDetail(
             id = 23,
             name = "Daniel",
             description = "",
             thumbnail = "",
             comicAvailable = 3,
             seriesAvailable = 2,
-            storiesAvailable = 11
+            storiesAvailable = 11,
+            modified = ""
         )
         CharacterDetailScreen(data = data) {}
     }

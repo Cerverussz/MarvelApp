@@ -6,5 +6,6 @@ import com.devdaniel.marvelapp.domain.model.CharacterDetail
 data class CharacterDetailState(
     val isLoading: Boolean = false,
     val data: CharacterDetail? = null,
-    @StringRes val errorMessage: Int? = null
+    @StringRes val errorMessage: Int? = null,
+    val isError: Boolean = false
 )

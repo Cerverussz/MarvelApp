@@ -51,16 +51,11 @@ class CharactersRepositoryImpl(
         emit(allCharacters.first())
     }
 
-    // TODO: falta obtener los datos locales y pintarlos y ver donde queda mejor, si en vista o por aca
-
-    private suspend fun addCharacterToLocalStorage(character: CharacterDTO) {
-        character.data.infoCharacter.forEach { data ->
-            val characterEntity = data.mapToDatabase()
-            val isCharacterExist =
-                charactersDao.getAllCharacters()
-                    .map { characters -> characters.contains(characterEntity) }
-            if (isCharacterExist.first().not()) {
-                charactersDao.insertCharacter(characterEntity)
+    private fun addCharacterToLocalStorage(character: CharacterDTO) {
+        character.data.infoCharacter.forEach { infoCharacter ->
+            val isCharacterExist = charactersDao.characterExist(characterId = infoCharacter.id)
+            if (isCharacterExist.not()) {
+                charactersDao.insertCharacter(infoCharacter.mapToDatabase())
             }
         }
     }

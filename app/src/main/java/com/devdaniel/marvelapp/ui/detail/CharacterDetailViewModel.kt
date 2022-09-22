@@ -3,23 +3,22 @@ package com.devdaniel.marvelapp.ui.detail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devdaniel.marvelapp.R
-import com.devdaniel.marvelapp.domain.common.Error
 import com.devdaniel.marvelapp.domain.common.fold
-import com.devdaniel.marvelapp.domain.common.toError
-import com.devdaniel.marvelapp.domain.common.validateHttpCodeErrorCode
-import com.devdaniel.marvelapp.domain.usecase.GetCharacterDetailUC
+import com.devdaniel.marvelapp.domain.usecase.CharacterDetailUC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CharacterDetailViewModel @Inject constructor(
-    private val getCharacterDetailUC: GetCharacterDetailUC
+    private val characterDetailUC: CharacterDetailUC
 ) : ViewModel() {
 
     private val _characterDetailState: MutableStateFlow<CharacterDetailState> = MutableStateFlow(
@@ -29,44 +28,62 @@ class CharacterDetailViewModel @Inject constructor(
         get() = _characterDetailState.asStateFlow()
 
     fun getCharacterDetail(characterId: Int) {
-        _characterDetailState.update { currentState -> currentState.copy(isLoading = true) }
+        _characterDetailState.update { currentState ->
+            currentState.copy(
+                isLoading = true,
+                isError = false
+            )
+        }
         viewModelScope.launch(Dispatchers.IO) {
-            getCharacterDetailUC(characterId).fold(
+            characterDetailUC.getCharacterDetail(characterId).fold(
                 onSuccess = { characterDetail ->
                     _characterDetailState.update { currentState ->
-                        currentState.copy(data = characterDetail, isLoading = false)
+                        currentState.copy(
+                            data = characterDetail,
+                            isLoading = false,
+                            isError = false
+                        )
                     }
                 },
-                onError = { errorCode, _ ->
-                    val error = handleError(errorCode.validateHttpCodeErrorCode())
+                onError = { _, _ ->
                     _characterDetailState.update { currentState ->
-                        currentState.copy(errorMessage = error.errorMessage, isLoading = false)
+                        currentState.copy(isError = true, isLoading = false)
                     }
                 },
-                onException = { exception ->
-                    val error = handleError(exception.toError())
+                onException = {
                     _characterDetailState.update { currentState ->
-                        currentState.copy(errorMessage = error.errorMessage, isLoading = false)
+                        currentState.copy(isError = true, isLoading = false)
                     }
                 }
             )
         }
     }
 
-    private fun handleError(error: Error): CharacterDetailState {
-        return when (error) {
-            Error.Connectivity -> CharacterDetailState(
-                errorMessage = R.string.connectivity_error,
-                isLoading = false
-            )
-            is Error.HttpException -> CharacterDetailState(
-                errorMessage = error.messageResId,
-                isLoading = false
-            )
-            is Error.Unknown -> CharacterDetailState(
-                errorMessage = R.string.connectivity_error,
-                isLoading = false
-            )
+    fun getLocalCharacterDetail(characterId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            characterDetailUC.getLocalCharacterDetail(characterId = characterId)
+                .onStart {
+                    _characterDetailState.update { currentState ->
+                        currentState.copy(isLoading = true, isError = false)
+                    }
+                }
+                .catch {
+                    _characterDetailState.update { currentState ->
+                        currentState.copy(
+                            isError = true,
+                            isLoading = false,
+                            errorMessage = R.string.not_found_error
+                        )
+                    }
+                }.collect { character ->
+                    _characterDetailState.update { currentState ->
+                        currentState.copy(
+                            data = character,
+                            isLoading = false,
+                            isError = false
+                        )
+                    }
+                }
         }
     }
 }

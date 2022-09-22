@@ -55,6 +55,19 @@ fun CharacterEntity.mapToDomain(): Character {
     )
 }
 
+fun CharacterEntity.mapToDomainDetail(): CharacterDetail {
+    return CharacterDetail(
+        id = id,
+        name = name,
+        description = description,
+        thumbnail = thumbnail,
+        comicAvailable = comicAvailable,
+        seriesAvailable = comicAvailable,
+        storiesAvailable = storiesAvailable,
+        modified = modified
+    )
+}
+
 internal fun InfoCharacter.Thumbnail.getThumbnail(): String = "$path.$extension".let {
     return it.replace("http", "https")
 }
