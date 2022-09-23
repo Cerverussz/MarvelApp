@@ -40,15 +40,15 @@ class CharactersFragment :
         observeFlows { coroutineScope ->
             coroutineScope.launch {
                 charactersViewModel.charactersState.collect { state ->
-                    when {
-                        state.isLoading -> {
+                    when (state) {
+                        CharactersState.Loading -> {
                             showLoader()
                         }
-                        state.characters.isNotEmpty() -> {
+                        is CharactersState.CharactersSuccess -> {
                             charactersAdapter.submitList(state.characters)
                             showRecyclerView()
                         }
-                        state.errorMessage != null -> {
+                        is CharactersState.CharactersError -> {
                             getLocalCharacters {
                                 hideAllViews()
                                 showScreenError(state.errorMessage)

@@ -30,7 +30,7 @@ class CharactersViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _charactersState: MutableStateFlow<CharactersState> =
-        MutableStateFlow(CharactersState(isLoading = false))
+        MutableStateFlow(CharactersState.Loading)
 
     val charactersState: StateFlow<CharactersState>
         get() = _charactersState.asStateFlow()
@@ -39,26 +39,23 @@ class CharactersViewModel @Inject constructor(
 
     fun getCharacters() {
         viewModelScope.launch(dispatcher) {
-            _charactersState.update { CharactersState(isLoading = true) }
+            _charactersState.update { CharactersState.Loading }
             charactersUC.getRemoteCharacters().fold(
                 onSuccess = { characters ->
                     _charactersState.update {
-                        CharactersState(
-                            isLoading = false,
-                            characters = characters
-                        )
+                        CharactersState.CharactersSuccess(characters = characters)
                     }
                 },
                 onError = { errorCode: Int, _: String? ->
                     val error = handleError(errorCode.validateHttpCodeErrorCode())
                     _charactersState.update {
-                        CharactersState(isLoading = false, errorMessage = error)
+                        CharactersState.CharactersError(errorMessage = error)
                     }
                 },
                 onException = { exception ->
                     val error = handleError(exception.toError())
                     _charactersState.update {
-                        CharactersState(isLoading = false, errorMessage = error)
+                        CharactersState.CharactersError(errorMessage = error)
                     }
                 }
             )
