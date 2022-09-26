@@ -9,7 +9,7 @@ import androidx.fragment.testing.R
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.core.internal.deps.dagger.internal.Preconditions
-import com.devdaniel.characters.HiltTestActivity
+import com.devdaniel.marvelapp.HiltTestActivity
 
 inline fun <reified T : Fragment> launchFragmentInHiltContainer(
     fragmentArgs: Bundle? = null,

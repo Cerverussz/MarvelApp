@@ -1,4 +1,4 @@
-package com.devdaniel.characters
+package com.devdaniel.marvelapp
 
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint

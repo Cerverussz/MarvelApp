@@ -1,17 +1,21 @@
 package com.devdaniel.marvelapp.di
 
-import com.devdaniel.marvelapp.data.remote.CharactersApi
+import android.content.Context
+import androidx.viewbinding.BuildConfig
+import com.devdaniel.marvelapp.util.ConnectivityObserver
+import com.devdaniel.marvelapp.util.NetworkConnectivityObserverImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -21,30 +25,50 @@ import javax.inject.Singleton
 )
 object NetworkTestModule {
 
+    @Provides
+    @Singleton
+    fun okHttpProvider(): OkHttpClient = OkHttpClient.Builder().apply {
+        connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+        readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+        writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+        retryOnConnectionFailure(true)
+        addInterceptor(loggingInterceptorProvider())
+    }.build()
+
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
 
     @Provides
     @Singleton
-    fun provideTestMarvelApi(client: OkHttpClient): CharactersApi {
+    fun retrofitProviderTest(
+        client: OkHttpClient
+    ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://localhost:8080/")
-            .client(client)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .client(client)
+            .baseUrl("http://localhost:8080/")
             .build()
-            .create()
     }
 
     @Provides
     @Singleton
-    fun provideTestOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(
-                HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                }
-            )
-            .build()
+    fun providesNetworkConnectivityObserverTest(
+        @ApplicationContext context: Context
+    ): ConnectivityObserver =
+        NetworkConnectivityObserverImpl(context)
+
+    private fun loggingInterceptorProvider(): HttpLoggingInterceptor {
+        return HttpLoggingInterceptor().setLevel(
+            if (BuildConfig.DEBUG) {
+                HttpLoggingInterceptor.Level.BODY
+            } else {
+                HttpLoggingInterceptor.Level.NONE
+            }
+        )
     }
 }
+
+private const val CONNECT_TIMEOUT = 15L
+private const val WRITE_TIMEOUT = 15L
+private const val READ_TIMEOUT = 15L
