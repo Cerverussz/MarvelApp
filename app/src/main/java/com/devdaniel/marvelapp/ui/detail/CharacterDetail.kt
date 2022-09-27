@@ -165,7 +165,7 @@ private fun CharacterTitle(name: String, scrollProvider: () -> Int) {
             text = name,
             style = MaterialTheme.typography.h6,
             color = MaterialTheme.colors.primaryVariant,
-            modifier = Modifier.padding(start = size_12Dp, end = size_12Dp)
+            modifier = Modifier.padding(start = size_12Dp, end = size_12Dp).testTag("nameCharacter")
         )
         Divider(color = black_1C1B1F.copy(alpha = ALPHA_03))
     }
