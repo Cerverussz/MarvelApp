@@ -13,7 +13,7 @@ interface CharactersDao {
     fun insertCharacter(character: CharacterEntity)
 
     @Query("SELECT * FROM character")
-    fun getAllCharacters(): Flow<List<CharacterEntity>>
+    suspend fun getAllCharacters(): List<CharacterEntity>
 
     @Query("SELECT count(character_id) FROM character WHERE character_id=:characterId")
     fun characterExist(characterId: Int): Boolean

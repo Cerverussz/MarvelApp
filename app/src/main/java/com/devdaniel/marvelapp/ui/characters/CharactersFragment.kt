@@ -11,13 +11,11 @@ import com.devdaniel.marvelapp.databinding.FragmentCharactersBinding
 import com.devdaniel.marvelapp.domain.model.Character
 import com.devdaniel.marvelapp.ui.mappers.toCharacterPresentation
 import com.devdaniel.marvelapp.ui.utils.BaseFragmentBinding
-import com.devdaniel.marvelapp.util.ConnectivityObserver
 import com.devdaniel.marvelapp.util.extension.hide
 import com.devdaniel.marvelapp.util.extension.observeFlows
 import com.devdaniel.marvelapp.util.extension.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class CharactersFragment :
@@ -25,15 +23,17 @@ class CharactersFragment :
 
     private val charactersViewModel: CharactersViewModel by viewModels()
 
-    @Inject
-    lateinit var connectivityObserver: ConnectivityObserver
-
     private val charactersAdapter by lazy { CharactersAdapter(::navigateToCharacterDetail) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupCollectors()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        charactersViewModel.getCharacters()
     }
 
     private fun setupCollectors() {
@@ -57,26 +57,6 @@ class CharactersFragment :
                     }
                 }
             }
-
-            coroutineScope.launch {
-                connectivityObserver.observe().collect {
-                    when (it) {
-                        ConnectivityObserver.Status.Available -> {
-                            println("daniel Available")
-                            charactersViewModel.getCharacters()
-                        }
-                        ConnectivityObserver.Status.Unavailable -> {
-                            println("daniel Unavailable")
-                        }
-                        ConnectivityObserver.Status.Losing -> {
-                            println("daniel Losing")
-                        }
-                        ConnectivityObserver.Status.Lost -> {
-                            getLocalCharacters()
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -89,11 +69,6 @@ class CharactersFragment :
                 closure.invoke()
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        charactersViewModel.getCharacters()
     }
 
     private fun showScreenError(errorMessage: Int?) {

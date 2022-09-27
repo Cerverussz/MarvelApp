@@ -1,16 +1,12 @@
 package com.devdaniel.marvelapp.di
 
-import android.content.Context
 import androidx.viewbinding.BuildConfig
-import com.devdaniel.marvelapp.util.ConnectivityObserver
 import com.devdaniel.marvelapp.util.Constants
-import com.devdaniel.marvelapp.util.NetworkConnectivityObserverImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -58,11 +54,6 @@ object NetworkModule {
             .baseUrl(Constants.BASE_URL)
             .build()
     }
-
-    @Provides
-    @Singleton
-    fun providesNetworkConnectivityObserver(@ApplicationContext context: Context): ConnectivityObserver =
-        NetworkConnectivityObserverImpl(context)
 }
 
 private const val CONNECT_TIMEOUT = 15L

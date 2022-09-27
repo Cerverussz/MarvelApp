@@ -22,7 +22,6 @@ import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
@@ -176,7 +175,7 @@ class CharactersRepositoryImplTest {
         every { characterEntity.comicAvailable } returns 1
         every { characterEntity.seriesAvailable } returns 2
         every { characterEntity.storiesAvailable } returns 3
-        every { charactersDao.getAllCharacters() } returns flowOf(charactersDB)
+        coEvery { charactersDao.getAllCharacters() } returns charactersDB
         mockkStatic("com.devdaniel.marvelapp.data.mappers.CharacterMapperKt")
 
         charactersRepository.getLocalCharacters().collect { characters ->
@@ -184,8 +183,8 @@ class CharactersRepositoryImplTest {
             assertThat(characters.first().id).isEqualTo(123)
         }
 
+        coVerify { charactersDao.getAllCharacters() }
         verify {
-            charactersDao.getAllCharacters()
             characterEntity.id
             characterEntity.name
         }

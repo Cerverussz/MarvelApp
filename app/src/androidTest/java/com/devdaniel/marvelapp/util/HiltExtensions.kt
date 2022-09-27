@@ -3,9 +3,8 @@ package com.devdaniel.marvelapp.util
 import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
-import androidx.annotation.StyleRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.testing.R
+import androidx.fragment.app.FragmentFactory
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.core.internal.deps.dagger.internal.Preconditions
@@ -13,27 +12,26 @@ import com.devdaniel.marvelapp.HiltTestActivity
 
 inline fun <reified T : Fragment> launchFragmentInHiltContainer(
     fragmentArgs: Bundle? = null,
-    @StyleRes themeResId: Int = R.style.FragmentScenarioEmptyFragmentActivityTheme,
-    crossinline action: Fragment.() -> Unit = {}
+    fragmentFactory: FragmentFactory? = null,
+    crossinline action: T.() -> Unit = {}
 ) {
-    val startActivityIntent = Intent.makeMainActivity(
-        ComponentName(
-            ApplicationProvider.getApplicationContext(),
-            HiltTestActivity::class.java
-        )
+    val mainActivityIntent = Intent.makeMainActivity(
+        ComponentName(ApplicationProvider.getApplicationContext(), HiltTestActivity::class.java)
     )
-
-    ActivityScenario.launch<HiltTestActivity>(startActivityIntent).onActivity { activity ->
-        val fragment: Fragment = activity.supportFragmentManager.fragmentFactory.instantiate(
+    ActivityScenario.launch<HiltTestActivity>(mainActivityIntent).onActivity { activity ->
+        fragmentFactory?.let {
+            activity.supportFragmentManager.fragmentFactory = it
+        }
+        val fragment = activity.supportFragmentManager.fragmentFactory.instantiate(
             Preconditions.checkNotNull(T::class.java.classLoader),
             T::class.java.name
         )
         fragment.arguments = fragmentArgs
-        activity.supportFragmentManager
-            .beginTransaction()
+
+        activity.supportFragmentManager.beginTransaction()
             .add(android.R.id.content, fragment, "")
             .commitNow()
 
-        fragment.action()
+        (fragment as T).action()
     }
 }

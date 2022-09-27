@@ -1,14 +1,10 @@
 package com.devdaniel.marvelapp.di
 
-import android.content.Context
 import androidx.viewbinding.BuildConfig
-import com.devdaniel.marvelapp.util.ConnectivityObserver
-import com.devdaniel.marvelapp.util.NetworkConnectivityObserverImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import okhttp3.OkHttpClient
@@ -50,13 +46,6 @@ object NetworkTestModule {
             .baseUrl("http://localhost:8080/")
             .build()
     }
-
-    @Provides
-    @Singleton
-    fun providesNetworkConnectivityObserverTest(
-        @ApplicationContext context: Context
-    ): ConnectivityObserver =
-        NetworkConnectivityObserverImpl(context)
 
     private fun loggingInterceptorProvider(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(

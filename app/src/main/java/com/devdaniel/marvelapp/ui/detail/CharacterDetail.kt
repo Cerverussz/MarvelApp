@@ -39,6 +39,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -355,7 +356,7 @@ private fun Image(
                     .build(),
                 contentDescription = stringResource(R.string.title_character_content_description),
                 placeholder = painterResource(R.drawable.ic_broken_image),
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize().testTag("imageCharacter"),
                 contentScale = ContentScale.Crop
             )
         }

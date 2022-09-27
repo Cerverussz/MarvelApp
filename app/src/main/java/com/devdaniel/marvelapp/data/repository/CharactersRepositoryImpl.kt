@@ -13,7 +13,7 @@ import com.devdaniel.marvelapp.domain.common.makeSafeRequest
 import com.devdaniel.marvelapp.domain.model.Character
 import com.devdaniel.marvelapp.domain.repository.CharactersRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
@@ -44,11 +44,11 @@ class CharactersRepositoryImpl(
 
     override fun getLocalCharacters(): Flow<List<Character>> = flow {
         val allCharacters = charactersDao.getAllCharacters().map { characters ->
-            characters.map {
-                it.mapToDomain()
-            }
+            characters.mapToDomain()
         }
-        emit(allCharacters.first())
+        emit(allCharacters)
+    }.catch { exception ->
+        println("daniel $exception")
     }
 
     private fun addCharacterToLocalStorage(character: CharacterDTO) {
