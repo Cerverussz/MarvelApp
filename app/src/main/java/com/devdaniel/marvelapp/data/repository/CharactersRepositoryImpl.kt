@@ -15,14 +15,13 @@ import com.devdaniel.marvelapp.domain.repository.CharactersRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 
 class CharactersRepositoryImpl(
     private val charactersApi: CharactersApi,
     private val charactersDao: CharactersDao
 ) : CharactersRepository {
-    override suspend fun getCharacters(): Result<List<Character>> {
-        val result = makeSafeRequest { charactersApi.getCharacters() }
+    override suspend fun getCharacters(name: String): Result<List<Character>> {
+        val result = makeSafeRequest { charactersApi.getCharacters(name) }
 
         return result.fold(
             onSuccess = {

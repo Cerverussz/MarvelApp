@@ -37,9 +37,6 @@ class CharactersFragmentTest : BaseUITest(dispatcher = QueueDispatcher()) {
     @get:Rule
     val hiltRule = HiltAndroidRule(this)
 
-    private val successCharactersResponse: MockResponse
-        get() = mockResponse(FILE_SUCCESS_CHARACTERS_RESPONSE, HttpURLConnection.HTTP_OK)
-
     private val failureCharactersResponse: MockResponse
         get() = mockResponse(FILE_SUCCESS_CHARACTERS_RESPONSE, HttpURLConnection.HTTP_UNAVAILABLE)
 
@@ -63,29 +60,11 @@ class CharactersFragmentTest : BaseUITest(dispatcher = QueueDispatcher()) {
 
     @Test
     @SmallTest
-    fun when_characters_is_displayed_should_show_name() {
-        launchFragment()
-        enqueueResponses(successCharactersResponse)
-        waitUntilViewIsNotDisplayed(withId(R.id.lavLoader))
-        checkViewInRecyclerWithIdAndTextIsDisplayed(
-            viewId = R.id.rcvCharacters,
-            viewText = "3-D Man",
-            position = 0
-        )
-        checkViewInRecyclerWithIdAndTextIsDisplayed(
-            viewId = R.id.rcvCharacters,
-            viewText = "A.I.M.",
-            position = 2
-        )
-    }
-
-    @Test
-    @SmallTest
     fun when_characters_is_not_displayed_should_show_local_characters() {
         val characterEntity = mockk<CharacterEntity>()
         val charactersDB = listOf(characterEntity)
         every { characterEntity.id } returns 123
-        every { characterEntity.name } returns "A.I.M."
+        every { characterEntity.name } returns "Iron Man"
         every { characterEntity.modified } returns "modified"
         every { characterEntity.description } returns "description"
         every { characterEntity.thumbnail } returns "thumbnail"
@@ -98,7 +77,7 @@ class CharactersFragmentTest : BaseUITest(dispatcher = QueueDispatcher()) {
         waitUntilViewIsNotDisplayed(withId(R.id.lavLoader))
         checkViewInRecyclerWithIdAndTextIsDisplayed(
             viewId = R.id.rcvCharacters,
-            viewText = "A.I.M.",
+            viewText = "Iron Man",
             position = 0
         )
     }

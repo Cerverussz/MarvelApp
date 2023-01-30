@@ -61,13 +61,13 @@ class CharactersRepositoryImplTest {
         every { infoCharacter.id } returns 123
         every { response.isSuccessful } returns true
         every { response.body() } returns characterDTO
-        coEvery { charactersApi.getCharacters() } returns response
+        coEvery { charactersApi.getCharacters("name") } returns response
         every { charactersDao.characterExist(123) } returns false
         mockkStatic("com.devdaniel.marvelapp.data.mappers.CharacterMapperKt")
         every { charactersDao.insertCharacter(infoCharacter.mapToDatabase()) } just Runs
         every { infoCharacter.toCharacterDomain() } returns character
 
-        val result = charactersRepository.getCharacters()
+        val result = charactersRepository.getCharacters("name")
 
         assertThat(result).isInstanceOf(Result.Success::class.java)
         assertThat((result as Result.Success).data.count()).isEqualTo(1)
@@ -83,7 +83,7 @@ class CharactersRepositoryImplTest {
             charactersDao.characterExist(123)
             charactersDao.insertCharacter(infoCharacter.mapToDatabase())
         }
-        coVerify { charactersApi.getCharacters() }
+        coVerify { charactersApi.getCharacters("name") }
     }
 
     @Test
@@ -100,12 +100,12 @@ class CharactersRepositoryImplTest {
         every { infoCharacter.id } returns 321
         every { response.isSuccessful } returns true
         every { response.body() } returns characterDTO
-        coEvery { charactersApi.getCharacters() } returns response
+        coEvery { charactersApi.getCharacters("name") } returns response
         every { charactersDao.characterExist(321) } returns true
         mockkStatic("com.devdaniel.marvelapp.data.mappers.CharacterMapperKt")
         every { infoCharacter.toCharacterDomain() } returns character
 
-        val result = charactersRepository.getCharacters()
+        val result = charactersRepository.getCharacters("name")
 
         assertThat(result).isInstanceOf(Result.Success::class.java)
         assertThat((result as Result.Success).data.count()).isEqualTo(1)
@@ -120,7 +120,7 @@ class CharactersRepositoryImplTest {
             response.isSuccessful
             charactersDao.characterExist(321)
         }
-        coVerify { charactersApi.getCharacters() }
+        coVerify { charactersApi.getCharacters("name") }
     }
 
     @Test
@@ -130,9 +130,9 @@ class CharactersRepositoryImplTest {
         every { response.body() } returns null
         every { response.code() } returns 404
         every { response.message() } returns "error"
-        coEvery { charactersApi.getCharacters() } returns response
+        coEvery { charactersApi.getCharacters("name") } returns response
 
-        val result = charactersRepository.getCharacters()
+        val result = charactersRepository.getCharacters("name")
 
         assertThat(result).isInstanceOf(Result.Error::class.java)
         assertThat((result as Result.Error).code).isEqualTo(404)
@@ -145,21 +145,21 @@ class CharactersRepositoryImplTest {
             response.message()
         }
         coVerify {
-            charactersApi.getCharacters()
+            charactersApi.getCharacters("name")
         }
     }
 
     @Test
     fun getCharactersException() = runTest {
         val exception = UnknownHostException("error")
-        coEvery { charactersApi.getCharacters() } throws exception
+        coEvery { charactersApi.getCharacters("name") } throws exception
 
-        val result = charactersRepository.getCharacters()
+        val result = charactersRepository.getCharacters("name")
 
         assertThat(result).isInstanceOf(Result.Exception::class.java)
         assertThat((result as Result.Exception).exception.message).isEqualTo("error")
         coVerify {
-            charactersApi.getCharacters()
+            charactersApi.getCharacters("name")
         }
     }
 

@@ -7,8 +7,8 @@ import kotlinx.coroutines.flow.Flow
 
 class CharactersUC(private val charactersRepository: CharactersRepository) {
 
-    suspend fun getRemoteCharacters(): Result<List<Character>> =
-        charactersRepository.getCharacters()
+    suspend fun getRemoteCharacters(name: String): Result<List<Character>> =
+        charactersRepository.getCharacters(name)
 
     fun getLocalCharacters(): Flow<List<Character>> = charactersRepository.getLocalCharacters()
 }

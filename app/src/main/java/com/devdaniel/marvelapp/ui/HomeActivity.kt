@@ -16,6 +16,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(R.anim.from_right_in, R.anim.from_left_out)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navHostFragment =

@@ -1,112 +1,1576 @@
 {
   "code": 200,
   "status": "Ok",
-  "copyright": "© 2022 MARVEL",
-  "attributionText": "Data provided by Marvel. © 2022 MARVEL",
-  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2022 MARVEL</a>",
-  "etag": "14cb781059315f9631d0e9158cdf818ef5af55c1",
+  "copyright": "© 2023 MARVEL",
+  "attributionText": "Data provided by Marvel. © 2023 MARVEL",
+  "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. © 2023 MARVEL</a>",
+  "etag": "5b349cfe5ddb9aa9ff059294d739ff6c7d9d1c03",
   "data": {
     "offset": 0,
-    "limit": 20,
-    "total": 1,
-    "count": 1,
+    "limit": 10,
+    "total": 2322,
+    "count": 10,
     "results": [
       {
-        "id": 1010699,
-        "name": "Aaron Stack",
-        "description": "",
-        "modified": "1969-12-31T19:00:00-0500",
+        "id": 27238,
+        "digitalId": 0,
+        "title": "Wolverine Saga (2009) #7",
+        "issueNumber": 7,
+        "variantDescription": "",
+        "description": null,
+        "modified": "-0001-11-30T00:00:00-0500",
+        "isbn": "",
+        "upc": "5960606814-00711",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 32,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/27238",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/27238/wolverine_saga_2009_7?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/8086",
+          "name": "Wolverine Saga (2009)"
+        },
+        "variants": [
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2029-12-31T00:00:00-0500"
+          },
+          {
+            "type": "focDate",
+            "date": "2009-06-11T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 0
+          }
+        ],
         "thumbnail": {
           "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available",
           "extension": "jpg"
         },
-        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1010699",
-        "comics": {
-          "available": 14,
-          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1010699/comics",
+        "images": [
+        ],
+        "creators": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/27238/creators",
           "items": [
             {
-              "resourceURI": "http://gateway.marvel.com/v1/public/comics/40776",
-              "name": "Dark Avengers (2012) #177"
-            },
-            {
-              "resourceURI": "http://gateway.marvel.com/v1/public/comics/40773",
-              "name": "Dark Avengers (2012) #179"
-            },
-            {
-              "resourceURI": "http://gateway.marvel.com/v1/public/comics/40774",
-              "name": "Dark Avengers (2012) #180"
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/4430",
+              "name": "Jeff Youngquist",
+              "role": "editor"
             }
           ],
-          "returned": 14
+          "returned": 1
         },
-        "series": {
-          "available": 3,
-          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1010699/series",
+        "characters": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/27238/characters",
           "items": [
             {
-              "resourceURI": "http://gateway.marvel.com/v1/public/series/789",
-              "name": "Dark Avengers (2012 - 2013)"
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
             },
             {
-              "resourceURI": "http://gateway.marvel.com/v1/public/series/3374",
-              "name": "Hulk (2008 - 2012)"
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009718",
+              "name": "Wolverine"
+            }
+          ],
+          "returned": 2
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/27238/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/59792",
+              "name": "Cover #59792",
+              "type": "cover"
             },
             {
-              "resourceURI": "http://gateway.marvel.com/v1/public/series/2085",
-              "name": "Universe X (2000 - 2001)"
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/59793",
+              "name": "Interior #59793",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/27238/events",
+          "items": [
+          ],
+          "returned": 0
+        }
+      },
+      {
+        "id": 101541,
+        "digitalId": 60748,
+        "title": "Iron Man (2020) #25",
+        "issueNumber": 25,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2022-11-10T17:58:22-0500",
+        "isbn": "",
+        "upc": "75960609866802511",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 56,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/101541",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/101541/iron_man_2020_25?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Iron-Man-25/digital-comic/60748?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "reader",
+            "url": "http://marvel.com/digitalcomics/view.htm?iid=60748&utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/30148",
+          "name": "Iron Man (2020 - Present)"
+        },
+        "variants": [
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/105384",
+            "name": "Iron Man (2020) #25 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/105385",
+            "name": "Iron Man (2020) #25 (Variant)"
+          }
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2022-11-16T00:00:00-0500"
+          },
+          {
+            "type": "focDate",
+            "date": "2022-10-17T00:00:00-0400"
+          },
+          {
+            "type": "unlimitedDate",
+            "date": "2023-02-20T00:00:00-0500"
+          },
+          {
+            "type": "digitalPurchaseDate",
+            "date": "2022-09-22T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 5.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/80/637255c1cc88a",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/80/637255c1cc88a",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 13,
+          "collectionURI": "http://gateway.marvel.c 2023-01-29 19:01:29.062 22930-22977/com.devdaniel.marvelapp I/okhttp.OkHttpClient: om/v1/public/comics/101541/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/14369",
+              "name": "Dotun Akande",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/8504",
+              "name": "Frank D'ARMATA",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/14328",
+              "name": "Bryan Valenza",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/14370",
+              "name": "Murewa Ayodele",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/1231",
+              "name": "Kurt Busiek",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13861",
+              "name": "Christopher Cantwell",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/11680",
+              "name": "Gerry Duggan",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/2133",
+              "name": "Tom Brevoort",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/5251",
+              "name": "Vc Joe Caramagna",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/10477",
+              "name": "Benjamin Dewey",
+              "role": "inker"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/12624",
+              "name": "Juan Frigeri",
+              "role": "inker"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/63",
+              "name": "Alex Ross",
+              "role": "painter (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13816",
+              "name": "Angel Unzueta",
+              "role": "penciler"
+            }
+          ],
+          "returned": 13
+        },
+        "characters": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/101541/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
+            }
+          ],
+          "returned": 1
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/101541/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/224183",
+              "name": "cover from Iron Man (2020) #25",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/224184",
+              "name": "story from Iron Man (2020) #25",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/101541/events",
+          "items": [
+          ],
+          "returned": 0
+        }
+      },
+      {
+        "id": 98453,
+        "digitalId": 0,
+        "title": "Secret Invasion (2022) #1",
+        "issueNumber": 1,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2023-01-27T09:18:51-0500",
+        "isbn": "",
+        "upc": "75960620251500111",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 40,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/98453",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/98453/secret_invasion_2022_1?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Secret-Invasion-1/digital-comic/59368?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/33963",
+          "name": "Secret Invasion (2022 - Present)"
+        },
+        "variants": [
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/101412",
+            "name": "Secret Invasion (2022) #1 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/101414",
+            "name": "Secret Invasion (2022) #1 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/102534",
+            "name": "Secret Invasion (2022) #1 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/101413",
+            "name": "Secret Invasion (2022) #1 (Variant)"
+          }
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2022-11-02T00:00:00-0400"
+          },
+          {
+            "type": "focDate",
+            "date": "2022-10-03T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 4.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/c0/63613a2ae5dea",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/b/c0/63613a2ae5dea",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 7,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/98453/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marve 2023-01-29 19:01:29.062 22930-22977/com.devdaniel.marvelapp I/okhttp.OkHttpClient: l.com/v1/public/creators/12989",
+              "name": "Jordie Bellaire",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13523",
+              "name": "Annalise Bissa",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13180",
+              "name": "Federico Blee",
+              "role": "colorist (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/5251",
+              "name": "Vc Joe Caramagna",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/9081",
+              "name": "Matteo Lolli",
+              "role": "penciler (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13602",
+              "name": "Francesco Mobili",
+              "role": "inker"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/12465",
+              "name": "Ryan North",
+              "role": "writer"
+            }
+          ],
+          "returned": 7
+        },
+        "characters": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/98453/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
+            }
+          ],
+          "returned": 1
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/98453/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/217975",
+              "name": "cover from Secret Invasion (2022) #1",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/217976",
+              "name": "story from Secret Invasion (2022) #1",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/98453/events",
+          "items": [
+          ],
+          "returned": 0
+        }
+      },
+      {
+        "id": 100734,
+        "digitalId": 0,
+        "title": "Iron Cat (2022) #5",
+        "issueNumber": 5,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2023-01-27T09:30:40-0500",
+        "isbn": "",
+        "upc": "75960620377200511",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 32,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/100734",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/100734/iron_cat_2022_5?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Iron-Cat-5/digital-comic/60566?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/34558",
+          "name": "Iron Cat (2022)"
+        },
+        "variants": [
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/105020",
+            "name": "Iron Cat (2022) #5 (Variant)"
+          }
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2022-10-26T00:00:00-0400"
+          },
+          {
+            "type": "focDate",
+            "date": "2022-09-26T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 3.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/10/6352e5c3263e0",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/3/10/6352e5c3263e0",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 5,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100734/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/8504",
+              "name": "Frank D'ARMATA",
+              "role": "colorist (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/12457",
+              "name": "Edward Devin Lewis",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13471",
+              "name": "Jed Mackay",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/14075",
+              "name": "Vc Ariana Maher",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/7909",
+              "name": "Pere Perez",
+              "role": "penciler (cover)"
+            }
+          ],
+          "returned": 5
+        },
+        "characters": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100734/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009185",
+              "name": "Black Cat"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
+            }
+          ],
+          "returned": 2
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100734/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/222570",
+              "name": "cover from Iron Cat (2022) #5",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/222571",
+              "name": "story from Iron Cat (2022) #5",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100734/events",
+          "items": [
+          ],
+          "returned": 0
+        }
+      },
+      {
+        "id": 95815,
+        "digitalId": 60567,
+        "title": "Iron Man (2020) #24",
+        "issueNumber": 24,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2022-11-10T17:58:36-0500",
+        "isbn": "",
+        "upc": "75960609866802411",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 32,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/95815",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/95815/iron_man_2020_24?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Iron-Man-24/digital-comic/60567?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "reader",
+            "url": "http://marvel.com/digitalcomics/view.htm?iid=60567&utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/30148",
+          "name": "Iron Man (2020 - Present)"
+        },
+        "variants": [
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/103588",
+            "name": "Iron Man (2020) #24 (Variant)"
+          }
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2022-10-19T00:00:00-0400"
+          },
+          {
+            "type": "focDate",
+            "date": "2022-09-19T00:00:00-0400"
+          },
+          {
+            "type": "unlimitedDate",
+            "date": "2023-01-23T00:00:00-0500"
+          },
+          {
+            "type": "digitalPurchaseDate",
+            "date": "2022-07-13T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 3.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/10/634f64ca111f6",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/6/10/634f64ca111f6",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 6,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95815/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/2133",
+              "name": "Tom Brevoort",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13861",
+              "name": "Christopher Cantwell",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/5251",
+              "name": "Vc Joe Caramagna",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/8504",
+              "name": "Frank D'ARMATA",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/63",
+              "name": "Alex Ross",
+              "role": "painter (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13816",
+              "name": "Angel Unzueta",
+              "role": "inker"
+            }
+          ],
+          "returned": 6
+        },
+        "characters": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95815/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
+            }
+          ],
+          "returned": 1
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95815/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/212694",
+              "name": "cover from Iron Man (2020) #24",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/212695",
+              "name": "story from Iron Man (2020) #24",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95815/events",
+          "items": [
+          ],
+          "returned": 0
+        }
+      },
+      {
+        "id": 102413,
+        "digitalId": 60341,
+        "title": "Fortnite X Marvel: Zero War (2022) #5",
+        "issueNumber": 5,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2022-09-09T12:59:19-0400",
+        "isbn": "",
+        "upc": "75960620430400511",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 40,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/102413",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/102413/fortnite_x_marvel_zero_war_2022_5?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Fortnite-X-Marvel-Zero-War-5/digital-comic/60341?utm_campaign=apiRef&utm_source=e5353 2023-01-29 19:01:29.063 22930-22977/com.devdaniel.marvelapp I/okhttp.OkHttpClient: 166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "reader",
+            "url": "http://marvel.com/digitalcomics/view.htm?iid=60341&utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/35373",
+          "name": "Fortnite X Marvel: Zero War (2022 - Present)"
+        },
+        "variants": [
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/103696",
+            "name": "Fortnite X Marvel: Zero War (2022) #5 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/103698",
+            "name": "Fortnite X Marvel: Zero War (2022) #5 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/103699",
+            "name": "Fortnite X Marvel: Zero War (2022) #5 (Variant)"
+          }
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2022-09-28T00:00:00-0400"
+          },
+          {
+            "type": "focDate",
+            "date": "2022-08-22T00:00:00-0400"
+          },
+          {
+            "type": "unlimitedDate",
+            "date": "2022-09-28T00:00:00-0400"
+          },
+          {
+            "type": "digitalPurchaseDate",
+            "date": "2022-07-13T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 5.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/d/70/631b352864086",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/d/70/631b352864086",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 8,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/102413/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/5251",
+              "name": "Vc Joe Caramagna",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/14175",
+              "name": "Sergio Davila",
+              "role": "penciler"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/430",
+              "name": "Edgar Delgado",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/11765",
+              "name": "Christos Gage",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/11579",
+              "name": "Sunny Gho",
+              "role": "colorist (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13145",
+              "name": "Sean Parsons",
+              "role": "inker"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13046",
+              "name": "Alanna Smith",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/758",
+              "name": "Leinil Francis Yu",
+              "role": "penciler (cover)"
+            }
+          ],
+          "returned": 8
+        },
+        "characters": {
+          "available": 5,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/102413/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017838",
+              "name": "Black Panther (Shuri)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009281",
+              "name": "Doctor Doom"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009610",
+              "name": "Spider-Man (Peter Parker)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009718",
+              "name": "Wolverine"
+            }
+          ],
+          "returned": 5
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/102413/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/225927",
+              "name": "cover from Marvel Adventure (2022) #5",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/225928",
+              "name": "story from Marvel Adventure (2022) #5",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/102413/events",
+          "items": [
+          ],
+          "returned": 0
+        }
+      },
+      {
+        "id": 100733,
+        "digitalId": 60342,
+        "title": "Iron Cat (2022) #4",
+        "issueNumber": 4,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2022-09-09T14:29:02-0400",
+        "isbn": "",
+        "upc": "75960620377200411",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 32,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/100733",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/100733/iron_cat_2022_4?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Iron-Cat-4/digital-comic/60342?utm_campaign=apiRef&utm_source=e5353166155e4561e37e2 2023-01-29 19:01:29.063 22930-22977/com.devdaniel.marvelapp I/okhttp.OkHttpClient: 07ae1bff612"
+          },
+          {
+            "type": "reader",
+            "url": "http://marvel.com/digitalcomics/view.htm?iid=60342&utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/34558",
+          "name": "Iron Cat (2022)"
+        },
+        "variants": [
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/104748",
+            "name": "Iron Cat (2022) #4 (Variant)"
+          }
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2022-09-21T00:00:00-0400"
+          },
+          {
+            "type": "focDate",
+            "date": "2022-08-22T00:00:00-0400"
+          },
+          {
+            "type": "unlimitedDate",
+            "date": "2022-12-26T00:00:00-0500"
+          },
+          {
+            "type": "digitalPurchaseDate",
+            "date": "2022-07-13T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 3.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/10/631b359a3ebd4",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/9/10/631b359a3ebd4",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 5,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100733/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/8504",
+              "name": "Frank D'ARMATA",
+              "role": "colorist (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/12457",
+              "name": "Edward Devin Lewis",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13471",
+              "name": "Jed Mackay",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/14075",
+              "name": "Vc Ariana Maher",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/7909",
+              "name": "Pere Perez",
+              "role": "penciler (cover)"
+            }
+          ],
+          "returned": 5
+        },
+        "characters": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100733/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009185",
+              "name": "Black Cat"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
+            }
+          ],
+          "returned": 2
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100733/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/222568",
+              "name": "cover from Iron Cat (2022) #4",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/222569",
+              "name": "story from Iron Cat (2022) #4",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100733/events",
+          "items": [
+          ],
+          "returned": 0
+        }
+      },
+      {
+        "id": 95814,
+        "digitalId": 60191,
+        "title": "Iron Man (2020) #23",
+        "issueNumber": 23,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2022-09-09T14:13:14-0400",
+        "isbn": "",
+        "upc": "75960609866802311",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 32,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/95814",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/95814/iron_man_2020_23?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Iron-Man-23/digital-comic/60191?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "reader",
+            "url": "http://marvel.com/digitalcomics/view.htm?iid=60191&utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/30148",
+          "name": "Iron Man (2020 - Present)"
+        },
+        "variants": [
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2022-09-14T00:00:00-0400"
+          },
+          {
+            "type": "focDate",
+            "date": "2022-08-15T00:00:00-0400"
+          },
+          {
+            "type": "unlimitedDate",
+            "date": "2022-12-19T00:00:00-0500"
+          },
+          {
+            "type": "digitalPurchaseDate",
+            "date": "2022-07-13T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 3.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/4/03/631b3a0899234",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/4/03/631b3a0899234",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 6,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95814/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/ 2023-01-29 19:01:29.063 22930-22977/com.devdaniel.marvelapp I/okhttp.OkHttpClient: v1/public/creators/2133",
+              "name": "Tom Brevoort",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13861",
+              "name": "Christopher Cantwell",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/5251",
+              "name": "Vc Joe Caramagna",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/8504",
+              "name": "Frank D'ARMATA",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/63",
+              "name": "Alex Ross",
+              "role": "painter (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13816",
+              "name": "Angel Unzueta",
+              "role": "inker"
+            }
+          ],
+          "returned": 6
+        },
+        "characters": {
+          "available": 3,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95814/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011286",
+              "name": "Cobalt Man"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1017834",
+              "name": "War Machine (James Rhodes)"
             }
           ],
           "returned": 3
         },
         "stories": {
-          "available": 27,
-          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1010699/stories",
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95814/stories",
           "items": [
             {
-              "resourceURI": "http://gateway.marvel.com/v1/public/stories/25634",
-              "name": "Universe X (2000) #10",
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/212692",
+              "name": "cover from Iron Man (2020) #23",
               "type": "cover"
             },
             {
-              "resourceURI": "http://gateway.marvel.com/v1/public/stories/25635",
-              "name": "Interior #25635",
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/212693",
+              "name": "story from Iron Man (2020) #23",
               "type": "interiorStory"
-            },
-            {
-              "resourceURI": "http://gateway.marvel.com/v1/public/stories/25637",
-              "name": "Universe X (2000) #12",
-              "type": "cover"
-            },
-            {
-              "resourceURI": "http://gateway.marvel.com/v1/public/stories/25638",
-              "name": "Interior #25638",
-              "type": "interiorStory"
-            },
-            {
-              "resourceURI": "http://gateway.marvel.com/v1/public/stories/25647",
-              "name": "Universe X (2000) #6",
-              "type": "cover"
             }
           ],
-          "returned": 20
+          "returned": 2
         },
         "events": {
           "available": 0,
-          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1010699/events",
-          "items": [],
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95814/events",
+          "items": [
+          ],
           "returned": 0
-        },
+        }
+      },
+      {
+        "id": 100732,
+        "digitalId": 60190,
+        "title": "Iron Cat (2022) #3",
+        "issueNumber": 3,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2022-09-09T14:28:53-0400",
+        "isbn": "",
+        "upc": "75960620377200311",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 32,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/100732",
         "urls": [
           {
             "type": "detail",
-            "url": "http://marvel.com/characters/2809/aaron_stack?utm_campaign=apiRef&utm_source=66b4cce720f3f567ec171a95c147750e"
+            "url": "http://marvel.com/comics/issue/100732/iron_cat_2022_3?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
           },
           {
-            "type": "comiclink",
-            "url": "http://marvel.com/comics/characters/1010699/aaron_stack?utm_campaign=apiRef&utm_source=66b4cce720f3f567ec171a95c147750e"
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Iron-Cat-3/digital-comic/60190?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "reader",
+            "url": "http://marvel.com/digitalcomics/view.htm?iid=60190&utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
           }
-        ]
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/34558",
+          "name": "Iron Cat (2022)"
+        },
+        "variants": [
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/103822",
+            "name": "Iron Cat (2022) #3 (Variant)"
+          }
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2022-08-17T00:00:00-0400"
+          },
+          {
+            "type": "focDate",
+            "date": "2022-07-18T00:00:00-0400"
+          },
+          {
+            "type": "unlimitedDate",
+            "date": "2022-11-21T00:00:00-0500"
+          },
+          {
+            "type": "digitalPurchaseDate",
+            "date": "2022-05-26T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 3.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/7/c0/62f3c67e79c99",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/7/c0/62f3c67e79c99",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 6,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100732/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/8504",
+              "name": "Frank D'ARMATA",
+              "role": "colorist (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/11615",
+              "name": "Jordi Tarragona Garcia",
+              "role": "inker"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/12457",
+              "name": "Edward Devin Lewis",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13471",
+              "name": "Jed Mackay",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/14075",
+              "name": "Vc Ariana Maher",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/7909",
+              "name": "Pere Perez",
+              "role": "penciler (cover)"
+            }
+          ],
+          "returned": 6
+        },
+        "characters": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100732/charac 2023-01-29 19:01:29.063 22930-22977/com.devdaniel.marvelapp I/okhttp.OkHttpClient: ters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009185",
+              "name": "Black Cat"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
+            }
+          ],
+          "returned": 2
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100732/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/222566",
+              "name": "cover from Iron Cat (2022) #3",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/222567",
+              "name": "story from Iron Cat (2022) #3",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/100732/events",
+          "items": [
+          ],
+          "returned": 0
+        }
+      },
+      {
+        "id": 95813,
+        "digitalId": 60001,
+        "title": "Iron Man (2020) #22",
+        "issueNumber": 22,
+        "variantDescription": "",
+        "description": null,
+        "modified": "2022-10-01T11:03:47-0400",
+        "isbn": "",
+        "upc": "75960609866802211",
+        "diamondCode": "",
+        "ean": "",
+        "issn": "",
+        "format": "Comic",
+        "pageCount": 32,
+        "textObjects": [
+        ],
+        "resourceURI": "http://gateway.marvel.com/v1/public/comics/95813",
+        "urls": [
+          {
+            "type": "detail",
+            "url": "http://marvel.com/comics/issue/95813/iron_man_2020_22?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "purchase",
+            "url": "http://comicstore.marvel.com/Iron-Man-22/digital-comic/60001?utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          },
+          {
+            "type": "reader",
+            "url": "http://marvel.com/digitalcomics/view.htm?iid=60001&utm_campaign=apiRef&utm_source=e5353166155e4561e37e207ae1bff612"
+          }
+        ],
+        "series": {
+          "resourceURI": "http://gateway.marvel.com/v1/public/series/30148",
+          "name": "Iron Man (2020 - Present)"
+        },
+        "variants": [
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/103015",
+            "name": "Iron Man (2020) #22 (Variant)"
+          },
+          {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/103300",
+            "name": "Iron Man (2020) #22 (Variant)"
+          }
+        ],
+        "collections": [
+        ],
+        "collectedIssues": [
+        ],
+        "dates": [
+          {
+            "type": "onsaleDate",
+            "date": "2022-08-03T00:00:00-0400"
+          },
+          {
+            "type": "focDate",
+            "date": "2022-07-04T00:00:00-0400"
+          },
+          {
+            "type": "unlimitedDate",
+            "date": "2022-11-07T00:00:00-0500"
+          },
+          {
+            "type": "digitalPurchaseDate",
+            "date": "2022-04-26T00:00:00-0400"
+          }
+        ],
+        "prices": [
+          {
+            "type": "printPrice",
+            "price": 3.99
+          }
+        ],
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/5/80/62dab283063a1",
+          "extension": "jpg"
+        },
+        "images": [
+          {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/5/80/62dab283063a1",
+            "extension": "jpg"
+          }
+        ],
+        "creators": {
+          "available": 6,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95813/creators",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/2133",
+              "name": "Tom Brevoort",
+              "role": "editor"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13861",
+              "name": "Christopher Cantwell",
+              "role": "writer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/5251",
+              "name": "Vc Joe Caramagna",
+              "role": "letterer"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/8504",
+              "name": "Frank D'ARMATA",
+              "role": "colorist"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/63",
+              "name": "Alex Ross",
+              "role": "painter (cover)"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/creators/13816",
+              "name": "Angel Unzueta",
+              "role": "inker"
+            }
+          ],
+          "returned": 6
+        },
+        "characters": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95813/characters",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009368",
+              "name": "Iron Man"
+            }
+          ],
+          "returned": 1
+        },
+        "stories": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95813/stories",
+          "items": [
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/212690",
+              "name": "cover from Iron Man (2020) #22",
+              "type": "cover"
+            },
+            {
+              "resourceURI": "http://gateway.marvel.com/v1/public/stories/212691",
+              "name": "story from Iron Man (2020) #22",
+              "type": "interiorStory"
+            }
+          ],
+          "returned": 2
+        },
+        "events": {
+          "available": 0,
+          "collectionURI": "http://gateway.marvel.com/v1/public/comics/95813/events",
+          "items": [
+          ],
+          "returned": 0
+        }
       }
     ]
   }

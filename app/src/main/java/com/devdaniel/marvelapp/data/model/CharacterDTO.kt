@@ -45,7 +45,8 @@ data class InfoCharacter(
         val items: List<Items>
     ) {
         data class Items(
-            val name: String
+            val name: String,
+            val resourceURI: String
         )
     }
 

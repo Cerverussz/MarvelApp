@@ -68,7 +68,7 @@ val Typography = Typography(
         lineHeight = 24.sp
     ),
     subtitle1 = TextStyle(
-        fontFamily = Nabla,
+        fontFamily = FontFamily.Serif,
         fontSize = 16.sp,
         fontWeight = FontWeight.SemiBold,
         lineHeight = 24.sp,
@@ -82,11 +82,11 @@ val Typography = Typography(
         letterSpacing = 0.1.sp
     ),
     body1 = TextStyle(
-        fontFamily = Nabla,
+        fontFamily = FontFamily.SansSerif,
         fontSize = 16.sp,
         fontWeight = FontWeight.Normal,
-        lineHeight = 28.sp,
-        letterSpacing = 0.15.sp
+        lineHeight = 24.sp,
+        letterSpacing = 0.1.sp
     ),
     body2 = TextStyle(
         fontFamily = Nabla,

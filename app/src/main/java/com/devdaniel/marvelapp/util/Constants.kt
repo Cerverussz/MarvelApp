@@ -14,7 +14,7 @@ object Constants {
 
     const val API_KEY = "e5353166155e4561e37e207ae1bff612"
     private const val PRIVATE_KEY = "bad94acd3b4fe23b47439719c97009a5f4ea274b"
-    const val limit = "20"
+    const val limit = "100"
 
     fun hash(): String {
         val input = timestamp.plus(PRIVATE_KEY).plus(API_KEY)
@@ -28,16 +28,5 @@ object Constants {
         const val SIG_NUM = 1
         const val RADIX = 16
         const val LENGTH = 32
-    }
-
-    object JsonValues {
-        const val EMPTY = ""
-        const val JSON_EMPTY = "{}"
-    }
-
-    object DefaultValues {
-        const val STRING = ""
-        const val INT = 0
-        const val DOUBLE = 0.0
     }
 }

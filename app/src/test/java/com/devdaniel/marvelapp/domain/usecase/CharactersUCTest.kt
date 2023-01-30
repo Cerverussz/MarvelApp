@@ -30,12 +30,12 @@ class CharactersUCTest {
     @Test
     fun getRemoteCharacters() = runTest {
         val result = mockk<Result<List<Character>>>()
-        coEvery { charactersRepository.getCharacters() } returns result
+        coEvery { charactersRepository.getCharacters("name") } returns result
 
-        charactersUC.getRemoteCharacters()
+        charactersUC.getRemoteCharacters("name")
 
         coVerify {
-            charactersRepository.getCharacters()
+            charactersRepository.getCharacters("name")
         }
     }
 

@@ -25,9 +25,21 @@ android {
         testInstrumentationRunnerArguments clearPackageData: 'true'
     }
 
+    signingConfigs {
+        release {}
+        debug {}
+    }
+
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            debuggable = true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            debuggable = false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -125,7 +137,6 @@ dependencies {
     // UI Test
     implementation 'androidx.test.espresso:espresso-contrib:3.4.0'
     implementation 'io.mockk:mockk-android:1.12.5'
-//    androidTestImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'com.squareup.okhttp3:mockwebserver:5.0.0-alpha.10'

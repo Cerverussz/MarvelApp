@@ -1,6 +1,5 @@
 package com.devdaniel.marvelapp.di
 
-import com.devdaniel.marvelapp.data.local.CharactersDao
 import com.devdaniel.marvelapp.data.remote.CharacterDetailApi
 import com.devdaniel.marvelapp.data.repository.CharacterDetailRepositoryImpl
 import com.devdaniel.marvelapp.domain.repository.CharacterDetailRepository
@@ -25,9 +24,8 @@ object CharacterDetailModule {
     @Provides
     @ViewModelScoped
     fun characterDetailRepositoryProvider(
-        characterDetailApi: CharacterDetailApi,
-        charactersDao: CharactersDao
-    ): CharacterDetailRepository = CharacterDetailRepositoryImpl(characterDetailApi, charactersDao)
+        characterDetailApi: CharacterDetailApi
+    ): CharacterDetailRepository = CharacterDetailRepositoryImpl(characterDetailApi)
 
     @Provides
     @ViewModelScoped

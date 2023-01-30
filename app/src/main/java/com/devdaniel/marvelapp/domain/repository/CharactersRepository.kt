@@ -5,6 +5,6 @@ import com.devdaniel.marvelapp.domain.model.Character
 import kotlinx.coroutines.flow.Flow
 
 interface CharactersRepository {
-    suspend fun getCharacters(): Result<List<Character>>
+    suspend fun getCharacters(name: String): Result<List<Character>>
     fun getLocalCharacters(): Flow<List<Character>>
 }

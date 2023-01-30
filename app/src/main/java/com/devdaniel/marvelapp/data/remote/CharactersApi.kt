@@ -10,6 +10,7 @@ interface CharactersApi {
 
     @GET(SERVICE_CHARACTERS)
     suspend fun getCharacters(
+        @Query("name") name: String,
         @Query("apikey") apiKey: String = Constants.API_KEY,
         @Query("ts") ts: String = Constants.timestamp,
         @Query("hash") hash: String = Constants.hash(),

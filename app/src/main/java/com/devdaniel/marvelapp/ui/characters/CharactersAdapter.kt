@@ -1,14 +1,11 @@
 package com.devdaniel.marvelapp.ui.characters
 
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.devdaniel.marvelapp.databinding.ItemCharacterBinding
 import com.devdaniel.marvelapp.domain.model.Character
 import com.devdaniel.marvelapp.ui.utils.BaseAdapter
 import com.devdaniel.marvelapp.ui.utils.BaseViewHolder
-import com.devdaniel.marvelapp.util.extension.isOddOrEven
 import com.devdaniel.marvelapp.util.extension.loadImageFromUrl
 import com.devdaniel.marvelapp.util.extension.viewBinding
 
@@ -38,17 +35,6 @@ class CharactersAdapter(private val onCharacterClicked: (Character) -> Unit) :
             with(binding) {
                 txtCharacterName.text = item.name
                 imvCharacter.loadImageFromUrl(item.thumbnail)
-                if (isOddOrEven(adapterPosition)) {
-                    setDimensionRatio("H,1:2")
-                } else {
-                    setDimensionRatio("H,1:1")
-                }
-            }
-        }
-
-        private fun ItemCharacterBinding.setDimensionRatio(ratio: String) {
-            imvCharacter.updateLayoutParams<ConstraintLayout.LayoutParams> {
-                dimensionRatio = ratio
             }
         }
     }

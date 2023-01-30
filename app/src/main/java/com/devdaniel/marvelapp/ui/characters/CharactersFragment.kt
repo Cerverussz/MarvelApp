@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.devdaniel.marvelapp.R
 import com.devdaniel.marvelapp.databinding.FragmentCharactersBinding
 import com.devdaniel.marvelapp.domain.model.Character
@@ -33,7 +33,7 @@ class CharactersFragment :
 
     override fun onResume() {
         super.onResume()
-        charactersViewModel.getCharacters()
+        charactersViewModel.getCharactersByName()
     }
 
     private fun setupCollectors() {
@@ -109,8 +109,7 @@ class CharactersFragment :
     private fun setupRecyclerView() {
         with(binding.rcvCharacters) {
             adapter = charactersAdapter
-            layoutManager =
-                StaggeredGridLayoutManager(SPAN_COLUMNS, StaggeredGridLayoutManager.VERTICAL)
+            layoutManager = GridLayoutManager(activity, SPAN_COLUMNS)
         }
     }
 

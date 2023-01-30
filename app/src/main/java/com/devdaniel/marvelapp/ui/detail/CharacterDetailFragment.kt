@@ -31,10 +31,18 @@ class CharacterDetailFragment : Fragment() {
                 MarvelTheme {
                     CharacterDetail(
                         characterDetailViewModel = characterDetailViewModel,
-                        infoCharacter = infoCharacter.infoCharacter
-                    ) {
-                        findNavController().popBackStack()
-                    }
+                        infoCharacter = infoCharacter.infoCharacter,
+                        onBackPress = {
+                            findNavController().popBackStack()
+                        },
+                        navigation = { comic ->
+                            val action =
+                                CharacterDetailFragmentDirections.actionCharacterDetailFragmentToInfoComicFragment(
+                                    comic
+                                )
+                            findNavController().navigate(action)
+                        }
+                    )
                 }
             }
         }
