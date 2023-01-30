@@ -25,17 +25,9 @@ android {
         testInstrumentationRunnerArguments clearPackageData: 'true'
     }
 
-    signingConfigs {
-        release {}
-        debug {}
-    }
-
     buildTypes {
         debug {
-            minifyEnabled false
-            debuggable = true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
+
         }
         release {
             minifyEnabled true

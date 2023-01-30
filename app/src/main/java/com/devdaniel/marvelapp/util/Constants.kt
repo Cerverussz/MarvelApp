@@ -14,7 +14,7 @@ object Constants {
 
     const val API_KEY = "e5353166155e4561e37e207ae1bff612"
     private const val PRIVATE_KEY = "bad94acd3b4fe23b47439719c97009a5f4ea274b"
-    const val limit = "100"
+    const val limit = "1"
 
     fun hash(): String {
         val input = timestamp.plus(PRIVATE_KEY).plus(API_KEY)

@@ -25,8 +25,9 @@ import io.mockk.every
 import io.mockk.mockk
 import java.net.HttpURLConnection
 import javax.inject.Inject
+import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
-import okhttp3.mockwebserver.QueueDispatcher
+import okhttp3.mockwebserver.RecordedRequest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -34,7 +35,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 @HiltAndroidTest
-class CharactersIntegrationTest : BaseUITest(dispatcher = QueueDispatcher()) {
+class CharactersIntegrationTest : BaseUITest(dispatcher = comicsDispatcher) {
 
     @get:Rule(order = 1)
     val hiltRule = HiltAndroidRule(this)
@@ -60,13 +61,9 @@ class CharactersIntegrationTest : BaseUITest(dispatcher = QueueDispatcher()) {
         clearMocks(charactersDao)
     }
 
-    private val successCharacterDetailResponse: MockResponse
-        get() = mockResponse(FILE_SUCCESS_CHARACTER_DETAIL_2_RESPONSE, HttpURLConnection.HTTP_OK)
-
     @Test
     @SmallTest
     fun when_screen_is_created_and_click_on_character_should_show_details() {
-        enqueueResponses(successCharacterDetailResponse)
         val characterEntity = mockk<CharacterEntity>()
         val charactersDB = listOf(characterEntity)
         every { characterEntity.id } returns 123
@@ -85,6 +82,31 @@ class CharactersIntegrationTest : BaseUITest(dispatcher = QueueDispatcher()) {
             position = 0
         )
         waitUntilViewIsNotDisplayed(withId(R.id.lavLoader))
-        composeTestRule.onNodeWithText("Iron Man").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Wolverine Saga (2009) #7").assertIsDisplayed()
     }
 }
+
+private val comicsDispatcher by lazy {
+    object : Dispatcher() {
+        @Throws(InterruptedException::class)
+        override fun dispatch(request: RecordedRequest): MockResponse {
+            return when  {
+                request.path?.contains(SUCCESS_COMICS) ?: false -> {
+                    mockResponse(
+                        FILE_SUCCESS_CHARACTER_DETAIL_2_RESPONSE,
+                        HttpURLConnection.HTTP_OK
+                    )
+                }
+                else -> {
+                    mockResponse(
+                        String(),
+                        HttpURLConnection.HTTP_BAD_REQUEST
+                    )
+                }
+            }
+        }
+    }
+}
+
+private const val SUCCESS_COMICS =
+    "/v1/public/characters/123/comics?format=comic&limit=10&apikey=e5353166155e4561e37e207ae1bff612"
