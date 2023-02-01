@@ -53,6 +53,7 @@ import com.devdaniel.marvelapp.domain.model.InfoComics
 import com.devdaniel.marvelapp.ui.model.InfoCharacter
 import com.devdaniel.marvelapp.ui.theme.Typography
 import com.devdaniel.marvelapp.ui.theme.black_1C1B1F
+import com.devdaniel.marvelapp.ui.theme.purple_4A4458
 import com.devdaniel.marvelapp.ui.theme.purple_4F378B
 import com.devdaniel.marvelapp.ui.theme.rose_CCC2DC
 import com.devdaniel.marvelapp.ui.theme.white
@@ -66,7 +67,7 @@ private const val ALPHA_03 = 0.35f
 
 @Composable
 fun CharacterDetail(
-    characterDetailViewModel: CharacterDetailViewModel,
+    characterDetailViewModel: ComicsCharacterViewModel,
     infoCharacter: InfoCharacter?,
     onBackPress: () -> Unit,
     navigation: (item: InfoComics) -> Unit
@@ -98,21 +99,26 @@ private fun CharacterDetailScreen(
     onBackPress: () -> Unit,
     navigation: (item: InfoComics) -> Unit
 ) {
-    Column {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+    Column(modifier = Modifier.background(color = black_1C1B1F)) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.background(color = black_1C1B1F)
+        ) {
             Back(onBackPress)
             Text(
                 text = stringResource(id = R.string.title_character_comics),
                 style = Typography.h4.copy(color = MaterialTheme.colors.primaryVariant),
-                modifier = Modifier.padding(start = size_12Dp, end = size_12Dp)
+                modifier = Modifier
+                    .background(color = black_1C1B1F)
+                    .padding(start = size_12Dp, end = size_12Dp)
             )
         }
-        CharacterInfo(comics, navigation)
+        Comics(comics, navigation)
     }
 }
 
 @Composable
-fun CharacterInfo(comics: List<InfoComics>, navigation: (item: InfoComics) -> Unit) {
+fun Comics(comics: List<InfoComics>, navigation: (item: InfoComics) -> Unit) {
     Column(modifier = Modifier.background(color = black_1C1B1F)) {
         Appearances(comics, navigation)
     }
@@ -126,9 +132,10 @@ private fun Appearances(comics: List<InfoComics>, navigation: (item: InfoComics)
             Card(
                 border = BorderStroke(4.dp, color = black_1C1B1F),
                 onClick = {
-                          navigation.invoke(item)
+                    navigation.invoke(item)
                 },
-                modifier = Modifier.padding(4.dp)
+                modifier = Modifier.padding(4.dp),
+                backgroundColor = purple_4A4458
             ) {
                 Column(
                     verticalArrangement = Arrangement.Center
@@ -148,14 +155,9 @@ private fun Appearances(comics: List<InfoComics>, navigation: (item: InfoComics)
                     Column(modifier = Modifier.padding(size_10Dp)) {
                         Text(
                             text = item.titleComic,
-                            style = MaterialTheme.typography.body1,
-                            color = rose_CCC2DC,
+                            style = MaterialTheme.typography.h6.copy(fontSize = 16.sp),
+                            color = MaterialTheme.colors.primary,
                             modifier = Modifier.testTag("comicName")
-                        )
-                        Text(
-                            text = manageDescription(item.description.orEmpty()),
-                            style = MaterialTheme.typography.body1.copy(fontSize = 12.sp),
-                            color = white
                         )
                     }
                 }

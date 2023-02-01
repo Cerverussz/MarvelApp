@@ -3,7 +3,7 @@ package com.devdaniel.marvelapp.ui.detail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devdaniel.marvelapp.domain.common.fold
-import com.devdaniel.marvelapp.domain.usecase.CharacterDetailUC
+import com.devdaniel.marvelapp.domain.usecase.ComicsCharacterUC
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
@@ -14,8 +14,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class CharacterDetailViewModel @Inject constructor(
-    private val characterDetailUC: CharacterDetailUC
+class ComicsCharacterViewModel @Inject constructor(
+    private val characterDetailUC: ComicsCharacterUC
 ) : ViewModel() {
 
     private val _comicCharacterDetailState: MutableStateFlow<ComicCharacterDetailState> =

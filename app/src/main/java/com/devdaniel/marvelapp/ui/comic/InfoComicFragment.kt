@@ -90,14 +90,15 @@ class InfoComicFragment : Fragment() {
 
                         Column(modifier = Modifier.padding(size_10Dp)) {
                             Text(
-                                text = infoComic.infoComics.titleComic, color = white,
+                                text = infoComic.infoComics.titleComic,
+                                color = white,
                                 style = MaterialTheme.typography.h6,
                                 textAlign = TextAlign.Center
                             )
                             Text(
                                 text = infoComic.infoComics.description
                                     ?: stringResource(id = R.string.detail_placeholder),
-                                color = white
+                                color = MaterialTheme.colors.primary
                             )
                         }
                     }

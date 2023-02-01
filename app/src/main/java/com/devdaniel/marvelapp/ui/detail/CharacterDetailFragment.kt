@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CharacterDetailFragment : Fragment() {
 
-    private val characterDetailViewModel by viewModels<CharacterDetailViewModel>()
+    private val characterDetailViewModel by viewModels<ComicsCharacterViewModel>()
 
     private val infoCharacter: CharacterDetailFragmentArgs by navArgs()
 

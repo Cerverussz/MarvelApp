@@ -1,9 +1,9 @@
 package com.devdaniel.marvelapp.di
 
 import com.devdaniel.marvelapp.data.remote.CharacterDetailApi
-import com.devdaniel.marvelapp.data.repository.CharacterDetailRepositoryImpl
-import com.devdaniel.marvelapp.domain.repository.CharacterDetailRepository
-import com.devdaniel.marvelapp.domain.usecase.CharacterDetailUC
+import com.devdaniel.marvelapp.data.repository.ComicsCharacterRepositoryImpl
+import com.devdaniel.marvelapp.domain.repository.ComicsCharacterRepository
+import com.devdaniel.marvelapp.domain.usecase.ComicsCharacterUC
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,14 +18,14 @@ object CharacterDetailModule {
     @Provides
     @ViewModelScoped
     fun getCharacterDetailUCProvider(
-        characterDetailRepository: CharacterDetailRepository
-    ): CharacterDetailUC = CharacterDetailUC(characterDetailRepository)
+        characterDetailRepository: ComicsCharacterRepository
+    ): ComicsCharacterUC = ComicsCharacterUC(characterDetailRepository)
 
     @Provides
     @ViewModelScoped
     fun characterDetailRepositoryProvider(
         characterDetailApi: CharacterDetailApi
-    ): CharacterDetailRepository = CharacterDetailRepositoryImpl(characterDetailApi)
+    ): ComicsCharacterRepository = ComicsCharacterRepositoryImpl(characterDetailApi)
 
     @Provides
     @ViewModelScoped

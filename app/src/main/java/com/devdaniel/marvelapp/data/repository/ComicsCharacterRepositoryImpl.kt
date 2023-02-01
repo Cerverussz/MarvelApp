@@ -6,11 +6,11 @@ import com.devdaniel.marvelapp.domain.common.Result
 import com.devdaniel.marvelapp.domain.common.fold
 import com.devdaniel.marvelapp.domain.common.makeSafeRequest
 import com.devdaniel.marvelapp.domain.model.ComicCharacterDetail
-import com.devdaniel.marvelapp.domain.repository.CharacterDetailRepository
+import com.devdaniel.marvelapp.domain.repository.ComicsCharacterRepository
 
-class CharacterDetailRepositoryImpl(
+class ComicsCharacterRepositoryImpl(
     private val characterDetailApi: CharacterDetailApi
-) : CharacterDetailRepository {
+) : ComicsCharacterRepository {
 
     override suspend fun getComicsCharacterDetail(characterId: Int): Result<ComicCharacterDetail> {
         val result = makeSafeRequest { characterDetailApi.getComicsCharacterDetail(characterId) }
